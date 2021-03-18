@@ -47,7 +47,8 @@ img {
   font-weight: 300;
   font-size: 0.9em;
 }
-.logo img {
+.logo svg {
+  max-width: 100%;
   height: calc(100% - 15px);
 }
 
