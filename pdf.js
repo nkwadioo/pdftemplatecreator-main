@@ -22,4 +22,5 @@ pdf.create(document, options).then((res)=>{
 })
 .catch((err) => {
     console.log(err);
+    let r = 0;
 });
