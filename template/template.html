@@ -102,6 +102,10 @@ section h5 {
   text-decoration: underline;
   margin-bottom: 0.5rem;
 }
+section .dates div p {
+    justify-self: end;
+    margin-right: 0.4rem;
+}
 section p.sect {
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
@@ -127,7 +131,7 @@ section .notes ul {
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 8rem;
 }
 footer span {
   display: block;
@@ -309,7 +313,7 @@ footer b {
             <path d="M35.5182 25.5132C34.8847 25.57 34.1814 25.5132 34.1814 25.5132C34.1814 25.5132 34.6537 24.9726 34.813 24.795C35.2592 24.2971 35.9128 24.014 36.634 23.9145C37.9847 23.7264 38.3434 24.1976 38.3434 24.1976C38.3434 24.1976 37.6142 24.9344 37.4547 25.7953C37.4547 25.7953 36.2315 25.4487 35.5182 25.5132Z" fill="#731705"/>
             <path d="M35.9763 24.7013C35.9763 24.4301 36.3152 24.207 36.7334 24.207C37.1498 24.207 37.4905 24.4301 37.4905 24.7013C37.4905 24.9761 37.1498 25.1992 36.7334 25.1992C36.3152 25.1992 35.9763 24.9761 35.9763 24.7013Z" fill="white"/>
             <path d="M37.0323 24.6854C37.0323 24.522 36.9008 24.3896 36.7375 24.3896C36.5741 24.3896 36.4426 24.522 36.4426 24.6854C36.4426 24.8489 36.5741 24.9796 36.7375 24.9796C36.9008 24.9796 37.0323 24.8489 37.0323 24.6854Z" fill="#221F1F"/>
-            </svg>
+          </svg>
             
             <div class="dept">
                 <h4>higher education <br>& training</h4>
@@ -322,13 +326,13 @@ footer b {
         <section>
             <div class="dates">
                 <div class="enquires">
-                    <p>Enquires: </p><span>0115 </span>
+                    <p>Enquires: </p><span>{{enquires}} </span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>012 8598 4886 </span>
+                    <p>Tel No: </p><span>{{tell}} </span>
                 </div>
                 <div class="tel">
-                    <p>Date: </p><span>05/06/2021 </span>
+                    <p>Date: </p><span>{{create_date}} </span>
                 </div>
             </div>
             <div class="candidate">
@@ -343,7 +347,7 @@ footer b {
             <h5>NOTIFICATION OF TRADE TEST DATE:</h5>
             <p class="sect">You are hereby notified that your application for a trade test is approved according to the information below:</p>
             <div class="appInfo">
-                <p>Reference No: </p><span>012Ref551/FAB</span>                
+                <p>Reference No: </p><span>{{ref_no}}</span>                
                 <p>Trade Test Centre: </p><span>Centurion Olivenbosh</span>                
                 <p>Trade: </p><span>Machenical Trade 02</span>                
                 <p>OFO code: </p><span>MA05e202</span>                
@@ -366,7 +370,7 @@ footer b {
 
         <footer>
             <div class="signature">
-                <span>few</span>
+                <span></span>
                 <b>Signature</b>
             </div>
         </footer>

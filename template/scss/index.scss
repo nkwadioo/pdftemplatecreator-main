@@ -78,6 +78,11 @@ section {
                 color: $clr-text;
                 border-bottom: 1px solid black;
             }
+
+            p {
+                justify-self: end;
+                margin-right: 0.4rem;
+            }
         }
     }
 

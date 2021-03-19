@@ -1,41 +1,23 @@
-const pdf = require("pdf-creator-node");
+const express = require('express');
+const app = express();
+
+// const pdf = require("pdf-creator-node");
 const fs = require("fs");
 const path = require('path');
 const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 
-const template = fs.readFileSync("./template/template.html", "utf-8");
-const options = {
-    format: "A4", 
-    orientantion: "portrait",
-    border: "15mm",
-};
+app.use(express.json());
 
-const document = {
-    html: template,
-    data: {
-        message: "referenceNum",
-        image: `file://${__dirname}/template/codeOfArms.svg`
-    },
-    path: "./notifications.pdf",
+app.get('/generatePdf/1', function(req, res) {
+    createPDF(req, res );
+})
 
-};
-
-
-createPDF();
-// pdf.create(document, options).then((res)=>{
-//     console.log(res);
-//     createPDF();
-// })
-// .catch((err) => {
-//     console.log(err);
-// });
-
-
-async function createPDF(data = []) {
+async function createPDF( req, res) {
     var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, 'template.html'), 'utf8');
 	var template = handlebars.compile(templateHtml);
     // let img = // get local path or generate base64 image
+    let data = req.body;
 	var html = template(data);
 
 	var milis = new Date();
@@ -69,7 +51,7 @@ async function createPDF(data = []) {
 
     await page.setContent(
         `${html}`
-      )
+    )
 
     console.log(response.status())
 
@@ -78,4 +60,8 @@ async function createPDF(data = []) {
 	await page.pdf(options);
 	await browser.close();
 
+    return res.send(response.status())
+
 }
+app.use('/', (req, res) => res.send("Welcome Pdf generator !"));
+app.listen(4500, () => console.log(' Server is ready on localhost:' + 4500));
