@@ -9,12 +9,40 @@ const handlebars = require("handlebars");
 
 app.use(express.json());
 
-app.get('/generatePdf/1', function(req, res) {
-    createPDF(req, res );
+app.get('/generatePdf/notification', function(req, res) {
+    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+})
+app.get('/generatePdf/appointSME', function(req, res) {
+    createPDF(req, res, 'appointSME.html' );
+})
+app.get('/generatePdf/feedback', function(req, res) {
+    createPDF(req, res, 'feedback.html' );
+})
+app.get('/generatePdf/QTCO', function(req, res) {
+    createPDF(req, res, 'QTCO.html' );
+})
+app.get('/generatePdf/Tsteyl', function(req, res) {
+    createPDF(req, res, 'Tsteyl.html' );
 })
 
-async function createPDF( req, res) {
-    var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, 'template.html'), 'utf8');
+app.get('/generatePdf/1', function(req, res) {
+    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+})
+app.get('/generatePdf/2', function(req, res) {
+    createPDF(req, res, 'appointSME.html' );
+})
+app.get('/generatePdf/3', function(req, res) {
+    createPDF(req, res, 'feedback.html' );
+})
+app.get('/generatePdf/4', function(req, res) {
+    createPDF(req, res, 'QTCO.html' );
+})
+app.get('/generatePdf/5', function(req, res) {
+    createPDF(req, res, 'Tsteyl.html' );
+})
+
+async function createPDF( req, res, teplate_name) {
+    var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
 	var template = handlebars.compile(templateHtml);
     // let img = // get local path or generate base64 image
     let data = req.body;
