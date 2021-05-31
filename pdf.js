@@ -88,7 +88,7 @@ async function createPDF( req, res, teplate_name) {
 	await page.pdf(options);
 	await browser.close();
 
-    return res.send(response.status())
+    return res.send(response.status()).status(200);
 
 }
 app.use('/', (req, res) => res.send("Welcome Pdf generator !"));
