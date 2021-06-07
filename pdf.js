@@ -24,7 +24,6 @@ app.get('/generatePdf/QTCO', function(req, res) {
 app.get('/generatePdf/Tsteyl', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
-
 app.get('/generatePdf/1', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
@@ -40,6 +39,17 @@ app.get('/generatePdf/4', function(req, res) {
 app.get('/generatePdf/5', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
+app.get('/generatePdf/6', function(req, res) {
+    createPDF(req, res, 'AsswesorV2Letter.html' );
+})
+app.get('/generatePdf/7', function(req, res) {
+    createPDF(req, res, 'legacyTrade.html' );
+})
+app.get('/generatePdf/8', function(req, res) {
+    createPDF(req, res, 'TechnicalAA.html' );
+})
+
+
  
 async function createPDF( req, res, teplate_name) {
     var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
@@ -52,6 +62,7 @@ async function createPDF( req, res, teplate_name) {
 	milis = milis.getTime();
 
 	var pdfPath = `./notifications.pdf`;
+	
 
 	var options = {
 		width: '595px',

@@ -2,212 +2,235 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification of trade test date</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        *, ::after,
-::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification of trade test date</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  font-family: "Times New Roman", Times, serif;
-}
+    body {
+      font-family: "Times New Roman", Times, serif;
+    }
 
-img {
-  max-width: 100%;
-}
+    img {
+      max-width: 100%;
+    }
 
-.wrapper {
-  width: 90%;
-  margin: 2rem auto;
-}
+    .wrapper {
+      width: 90%;
+      margin: 2rem auto;
+    }
 
-.logo {
-  font-family: "Sunflower", sans-serif;
-  height: 3.02cm;
-  line-height: 17px;
-  letter-spacing: -0.5px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.logo h4 {
-  line-height: 23px;
-  margin-bottom: 0.4rem;
-  position: relative;
-  font-weight: 400;
-  font-size: x-large;
-}
-.logo h4::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background-color: black;
-  left: 0;
-  bottom: -0.21rem;
-}
-.logo p {
-  font-weight: 300;
-  font-size: 0.9em;
-}
-.logo img {
-  height: calc(100% - 15px);
-}
+    .logo {
+      font-family: "Sunflower", sans-serif;
+      height: 3.02cm;
+      line-height: 17px;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-section {
-  margin-top: 0.5rem;
-  font-size: 0.7rem;
-}
-section .dates {
-  display: grid;
-  grid-template-columns: 1fr 150px;
-  justify-items: flex-start;
-}
-section .dates > div {
-  grid-column: 2;
-  display: grid;
-  width: 100%;
-  grid-template-columns: 35% 50%;
-}
-section .dates > div span {
-  color: #2f2f2f;
-  border-bottom: 1px solid black;
-}
-section .candidate {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-}
-section .candidate > div {
-  display: grid;
-  grid-template-columns: minmax(12ch, 18ch) 1fr;
-  margin-bottom: 0.2rem;
-}
-section .candidate > div span {
-  text-decoration: underline;
-  text-underline-offset: 2.4px;
-  color: #2f2f2f;
-}
-section .candidate > div.address span {
-  line-height: 15.2px;
-}
-section h5 {
-  text-decoration: underline;
-  margin-bottom: 0.5rem;
-}
-section p.sect {
-  font-size: 0.7rem;
-  margin-bottom: 0.5rem;
-}
-section .appInfo {
-  width: 70%;
-  display: grid;
-  flex-direction: column;
-  grid-template-columns: 18ch 1fr;
-  row-gap: 0.3rem;
-}
-section .appInfo span {
-  border-bottom: 1px solid black;
-  color: #2f2f2f;
-  font-size: 0.6rem;
-}
-section .notes {
-  width: 70%;
-  margin: 0 auto;
-}
-section .notes ul {
-  margin-left: 0.6rem;
-}
+    .logo h4 {
+      line-height: 23px;
+      margin-bottom: 0.4rem;
+      position: relative;
+      font-weight: 400;
+      font-size: x-large;
+    }
 
-footer {
-  margin-top: 2rem;
-}
-footer span {
-  display: block;
-  width: 30%;
-  border-bottom: 1px solid;
-}
-footer b {
-  font-size: 0.6rem;
-}
+    .logo h4::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      left: 0;
+      bottom: -0.21rem;
+    }
 
-.address {
-  font-size: 0.7rem;
-}
-    </style>
+    .logo p {
+      font-weight: 300;
+      font-size: 0.9em;
+    }
+
+    .logo img {
+      height: calc(100% - 15px);
+    }
+
+    section {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+    }
+
+    section .dates {
+      display: grid;
+      grid-template-columns: 1fr 150px;
+      justify-items: flex-start;
+    }
+
+    section .dates>div {
+      grid-column: 2;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 35% 50%;
+    }
+
+    section .dates>div span {
+      color: #2f2f2f;
+      border-bottom: 1px solid black;
+    }
+
+    section .candidate {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+    }
+
+    section .candidate>div {
+      display: grid;
+      grid-template-columns: minmax(12ch, 18ch) 1fr;
+      margin-bottom: 0.2rem;
+    }
+
+    section .candidate>div span {
+      text-decoration: underline;
+      text-underline-offset: 2.4px;
+      color: #2f2f2f;
+    }
+
+    section .candidate>div.address span {
+      line-height: 15.2px;
+    }
+
+    section h5 {
+      text-decoration: underline;
+      margin-bottom: 0.5rem;
+    }
+
+    section p.sect {
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    section .appInfo {
+      width: 70%;
+      display: grid;
+      flex-direction: column;
+      grid-template-columns: 18ch 1fr;
+      row-gap: 0.3rem;
+    }
+
+    section .appInfo span {
+      border-bottom: 1px solid black;
+      color: #2f2f2f;
+      font-size: 0.6rem;
+    }
+
+    section .notes {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    section .notes ul {
+      margin-left: 0.6rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+    }
+
+    footer span {
+      display: block;
+      width: 30%;
+      border-bottom: 1px solid;
+    }
+
+    footer b {
+      font-size: 0.6rem;
+    }
+
+    .address {
+      font-size: 0.7rem;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="logo">
-            <img src="{{image}}" alt="">
-            <div class="dept">
-                <h4>higher education <br>& training</h4>
-                <p>Department:</p>
-                <p>Higher Education and Training</p>
-                <b>REPUBLIC OF SOUTH AFRICA</b>
-            </div>
-        </div>
-        <p class="address">Old Pretoria/Kempton Park Road, Private Bag X5, Olifantsfontein, 1665 Tel (011)206 1000 Fax (011)316 4763</p>
-        <section>
-            <div class="dates">
-                <div class="enquires">
-                    <p>Enquires: </p><span>0115 </span>
-                </div>
-                <div class="tel">
-                    <p>Tel No: </p><span>012 8598 4886 </span>
-                </div>
-                <div class="tel">
-                    <p>Date: </p><span>05/06/2021 </span>
-                </div>
-            </div>
-            <div class="candidate">
-                <div class="name">
-                    <p>Candidate: </p><span> Otlotleng Nkwadi </span>
-                </div>
-                <div class="address">
-                    <p>Address: </p><span> 3111 Setlogelo Drive, Ga-Rankuwa Unit 2, Ga-Rankuwa, 0208 </span>
-                </div>
-            </div>
-            <br>
-            <h5>NOTIFICATION OF TRADE TEST DATE:</h5>
-            <p class="sect">You are hereby notified that your application for a trade test is approved according to the information below:</p>
-            <div class="appInfo">
-                <p>Reference No: </p><span>012Ref551/FAB</span>                
-                <p>Trade Test Centre: </p><span>Centurion Olivenbosh</span>                
-                <p>Trade: </p><span>Machenical Trade 02</span>                
-                <p>OFO code: </p><span>MA05e202</span>                
-                <p>Speciliasation: </p><span>ETrain</span>                
-                <p>Trade Test Date: </p><span>09/072021</span>                
-                <p>Time: </p><span>12:15 PM</span>                
-                <p>Workshop No: </p><span>0022514848</span>                
-                <p>Requirements: </p><span>Calculator only</span> 
-            </div>
-            <br>
-            <div class="notes">
-                <p>Please note the above reference number in all communications</p>
-                <ul>
-                    <li>When you apply for a trade test you are deemed to be sufficiently prepared and therefore the test will not be postponed to accommodate pre-trade test training.</li>
-                    <li><b>Applicants will be disqualified for late coming after ONE hour.</b> </li>
-                    <li>Please bring this letter with you when you report to the trade test center for your test.</li>
-                </ul>
-            </div>
-        </section>
-
-        <footer>
-            <div class="signature">
-                <span>few</span>
-                <b>Signature</b>
-            </div>
-        </footer>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="{{image}}" alt="">
+      <div class="dept">
+        <h4>higher education <br>& training</h4>
+        <p>Department:</p>
+        <p>Higher Education and Training</p>
+        <b>REPUBLIC OF SOUTH AFRICA</b>
+      </div>
     </div>
+    <p class="address">Old Pretoria/Kempton Park Road, Private Bag X5, Olifantsfontein, 1665 Tel (011)206 1000 Fax
+      (011)316 4763</p>
+    <section>
+      <div class="dates">
+        <div class="enquires">
+          <p>Enquires: </p><span>0115 </span>
+        </div>
+        <div class="tel">
+          <p>Tel No: </p><span>012 8598 4886 </span>
+        </div>
+        <div class="tel">
+          <p>Date: </p><span>05/06/2021 </span>
+        </div>
+      </div>
+      <div class="candidate">
+        <div class="name">
+          <p>Candidate: </p><span> Otlotleng Nkwadi </span>
+        </div>
+        <div class="address">
+          <p>Address: </p><span> 3111 Setlogelo Drive, Ga-Rankuwa Unit 2, Ga-Rankuwa, 0208 </span>
+        </div>
+      </div>
+      <br>
+      <h5>NOTIFICATION OF TRADE TEST DATE:</h5>
+      <p class="sect">You are hereby notified that your application for a trade test is approved according to the
+        information below:</p>
+      <div class="appInfo">
+        <p>Reference No: </p><span>012Ref551/FAB</span>
+        <p>Trade Test Centre: </p><span>Centurion Olivenbosh</span>
+        <p>Trade: </p><span>Machenical Trade 02</span>
+        <p>OFO code: </p><span>MA05e202</span>
+        <p>Speciliasation: </p><span>ETrain</span>
+        <p>Trade Test Date: </p><span>09/072021</span>
+        <p>Time: </p><span>12:15 PM</span>
+        <p>Workshop No: </p><span>0022514848</span>
+        <p>Requirements: </p><span>Calculator only</span>
+      </div>
+      <br>
+      <div class="notes">
+        <p>Please note the above reference number in all communications</p>
+        <ul>
+          <li>When you apply for a trade test you are deemed to be sufficiently prepared and therefore the test will not
+            be postponed to accommodate pre-trade test training.</li>
+          <li><b>Applicants will be disqualified for late coming after ONE hour.</b> </li>
+          <li>Please bring this letter with you when you report to the trade test center for your test.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="signature">
+        <span>few</span>
+        <b>Signature</b>
+      </div>
+    </footer>
+  </div>
 </body>
 
 </html>
