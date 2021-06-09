@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/4d8c0259-4d5f-4308-90d6-9860d2b94dd4/resourceGroups/ATTS-RG/providers/Microsoft.Web/sites/create-pdfs",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/4d8c0259-4d5f-4308-90d6-9860d2b94dd4/resourceGroups/ATTS-RG/providers/Microsoft.Web/sites/documents-creator"
 }
