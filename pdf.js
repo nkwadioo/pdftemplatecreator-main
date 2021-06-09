@@ -45,6 +45,16 @@ app.post('/generatePdf/5', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
 
+app.post('/generatePdf/6', function(req, res) {
+    createPDF(req, res, 'AsswesorV2Letter.html' );
+})
+app.post('/generatePdf/7', function(req, res) {
+    createPDF(req, res, 'legacyTrade.html' );
+})
+app.post('/generatePdf/8', function(req, res) {
+    createPDF(req, res, 'TechnicalAA.html' );
+})
+
 async function createPDF( req, res, teplate_name) {
     try {
 		var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
