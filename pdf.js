@@ -6,38 +6,42 @@ const fs = require("fs");
 const path = require('path');
 const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
-app.get('/generatePdf/notification', function(req, res) {
+app.get('/', (req, res) => res.send("Welcome Pdf generator !"));
+
+app.post('/generatePdf/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
-app.get('/generatePdf/appointSME', function(req, res) {
+app.post('/generatePdf/appointSME', function(req, res) {
     createPDF(req, res, 'appointSME.html' );
 })
-app.get('/generatePdf/feedback', function(req, res) {
+app.post('/generatePdf/feedback', function(req, res) {
     createPDF(req, res, 'feedback.html' );
 })
-app.get('/generatePdf/QTCO', function(req, res) {
+app.post('/generatePdf/QTCO', function(req, res) {
     createPDF(req, res, 'QTCO.html' );
 })
-app.get('/generatePdf/Tsteyl', function(req, res) {
+app.post('/generatePdf/Tsteyl', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
 
-app.get('/generatePdf/1', function(req, res) {
+app.post('/generatePdf/1', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
-app.get('/generatePdf/2', function(req, res) {
+app.post('/generatePdf/2', function(req, res) {
     createPDF(req, res, 'appointSME.html' );
 })
-app.get('/generatePdf/3', function(req, res) {
+app.post('/generatePdf/3', function(req, res) {
     createPDF(req, res, 'feedback.html' );
 })
-app.get('/generatePdf/4', function(req, res) {
+app.post('/generatePdf/4', function(req, res) {
     createPDF(req, res, 'QTCO.html' );
 })
-app.get('/generatePdf/5', function(req, res) {
+app.post('/generatePdf/5', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
 
@@ -85,48 +89,51 @@ async function createPDF( req, res, teplate_name) {
 		)
 
 		console.log(response.status())
-
-
 		
-			await page.pdf(options);
-			// await page.close();
-			await browser.close();
+		await page.pdf(options);
+		await page.close();
+		await browser.close();
 
-			let r = response['_status'];
-			if(response['_status'] !== 200){
-				return res.send({err: 'Error loading file'}).status(400);
-			}
-			var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-			var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
-			res.setHeader('Content-Length', stat.size);
-			res.setHeader('Content-Type', 'application/pdf');
-			res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
-			file.pipe(res)
+		let r = response['_status'];
+		if(response['_status'] !== 200){
+			return res.send({err: 'Error loading file'}).status(400);
+		}
 
-			var readStream = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-			readStream
-			.on('data', function (chunk) {
-				console.log(chunk);
-				// chunk.pipe(res)
-				// readStream.destroy();
-				// res.send(chunk)
+		let contents = fs.readFileSync(path.join(__dirname, '/notifications.pdf'), 'utf8');
+		
+		// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
+		var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+		res.setHeader('Content-Length', stat.size);
+		res.setHeader('Content-Type', 'application/pdf');
+		res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
 
-				// return res.status(200).send(chunk);
-			})
-			.on('end', function () {
-				// This may not been called since we are destroying the stream
-				// the first time 'data' event is received
-				console.log('All the data in the file has been read');
-			})
-			.on('error', function(err) {
-				
-				return res.status(400).send('err');
-			})
-			.on('close', function (err) {
-				readStream.destroy()
-				console.log('Stream has been destroyed and file has been closed');
-				return res.status(200).send('done');
-			});
+		return res.send(contents).status(200);
+		// file.pipe(res)
+
+		// var readStream = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
+		// readStream
+		// .on('data', function (chunk) {
+		// 	console.log(chunk);
+		// 	// chunk.pipe(res)
+		// 	// readStream.destroy();
+		// 	// res.send(chunk)
+
+		// 	// return res.status(200).send(chunk);
+		// })
+		// .on('end', function () {
+		// 	// This may not been called since we are destroying the stream
+		// 	// the first time 'data' event is received
+		// 	console.log('All the data in the file has been read');
+		// })
+		// .on('error', function(err) {
+			
+		// 	return res.status(400).send('err');
+		// })
+		// .on('close', function (err) {
+		// 	readStream.destroy()
+		// 	console.log('Stream has been destroyed and file has been closed');
+		// 	return res.status(200);
+		// });
 
 	}catch(err) {
 		return res.send({err: 'Error linking fill / puppeteer'}).status(400);
@@ -156,5 +163,5 @@ async function createPDF( req, res, teplate_name) {
     
 
 }
-app.use('/', (req, res) => res.send("Welcome Pdf generator !"));
-app.listen(3109 /* '10.123.56.203', */, () => console.log(' Server is ready on -' + 3109));
+
+app.listen(3109 /* '10.123.56.203', */, () => console.log(' Server is ready on :' + 3109));
