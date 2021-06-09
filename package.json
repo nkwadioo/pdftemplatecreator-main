@@ -4,7 +4,6 @@
   "main": "pdf.js",
   "scripts": {
     "start": "node pdf.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "pdf.js"
   },
   "author": "mATT",
