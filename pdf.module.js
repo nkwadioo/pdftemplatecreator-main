@@ -34,7 +34,8 @@ async function createPDF( req, res, teplate_name) {
 		// puppeteer.cl try closing or creating new puppeteer
 
 		const browser = await puppeteer.launch({
-			args: ['--no-sandbox'],
+			args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+			
 			headless: true
 		});
 
@@ -69,8 +70,8 @@ async function createPDF( req, res, teplate_name) {
 
 		return res.send(contents).status(200);
 
-	}catch(err) {
-		return res.send({err: 'Error linking fill / puppeteer'}).status(400);
+	}catch(error) {
+		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
 	}
 
     
