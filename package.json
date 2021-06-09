@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "pdf.js",
   "scripts": {
     "start": "node pdf.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "server.js"
+    "nodemon": "pdf.js"
   },
   "author": "mATT",
   "license": "MIT",
