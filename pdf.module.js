@@ -34,7 +34,8 @@ async function createPDF( req, res, teplate_name) {
 		// puppeteer.cl try closing or creating new puppeteer
 
 		const browser = await puppeteer.launch({
-			args: ['--no-sandbox'],
+			args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+			
 			headless: true
 		});
 
