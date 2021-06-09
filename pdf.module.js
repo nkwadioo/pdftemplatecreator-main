@@ -77,49 +77,49 @@ async function createPDF( req, res, teplate_name) {
 
 } 
 
-router.post('/generatePdf/notification', function(req, res) {
+router.post('/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
-router.post('/generatePdf/appointSME', function(req, res) {
+router.post('/appointSME', function(req, res) {
     createPDF(req, res, 'appointSME.html' );
 })
-router.post('/generatePdf/feedback', function(req, res) {
+router.post('/feedback', function(req, res) {
     createPDF(req, res, 'feedback.html' );
 })
-router.post('/generatePdf/QTCO', function(req, res) {
+router.post('/QTCO', function(req, res) {
     createPDF(req, res, 'QTCO.html' );
 })
-router.post('/generatePdf/Tsteyl', function(req, res) {
+router.post('/Tsteyl', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
 
-router.get('/generatePdf/1', function(req, res) {
+router.get('/1', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
 
-router.post('/generatePdf/1', function(req, res) {
+router.post('/1', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
-router.post('/generatePdf/2', function(req, res) {
+router.post('/2', function(req, res) {
     createPDF(req, res, 'appointSME.html' );
 })
-router.post('/generatePdf/3', function(req, res) {
+router.post('/3', function(req, res) {
     createPDF(req, res, 'feedback.html' );
 })
-router.post('/generatePdf/4', function(req, res) {
+router.post('/4', function(req, res) {
     createPDF(req, res, 'QTCO.html' );
 })
-router.post('/generatePdf/5', function(req, res) {
+router.post('/5', function(req, res) {
     createPDF(req, res, 'Tsteyl.html' );
 })
 
-router.post('/generatePdf/6', function(req, res) {
+router.post('/6', function(req, res) {
     createPDF(req, res, 'AsswesorV2Letter.html' );
 })
-router.post('/generatePdf/7', function(req, res) {
+router.post('/7', function(req, res) {
     createPDF(req, res, 'legacyTrade.html' );
 })
-router.post('/generatePdf/8', function(req, res) {
+router.post('/8', function(req, res) {
     createPDF(req, res, 'TechnicalAA.html' );
 })
 

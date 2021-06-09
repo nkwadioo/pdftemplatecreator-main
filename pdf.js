@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 //Import Routes
-const pdfRoute = require('./app_modules/pdf.module');
+const pdfRoute = require('./pdf.module');
 app.use('/generatePdf', pdfRoute);
 
 
