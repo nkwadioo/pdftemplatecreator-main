@@ -11,7 +11,6 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => res.send("Welcome Pdf generator !"));
 
 app.post('/generatePdf/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
@@ -174,4 +173,5 @@ async function createPDF( req, res, teplate_name) {
 
 } 
 // 3109
-app.listen(80 /* '10.123.56.203', */, () => console.log(' Server is ready on :' + 80));
+app.use('/', (req, res) => res.send("Welcome Pdf generator !"));
+app.listen(process.env.PORT || 3109 /* '10.123.56.203', */, () => console.log(' Server is ready on :' + process.env.PORT || 3109));
