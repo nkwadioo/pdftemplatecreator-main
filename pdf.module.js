@@ -101,7 +101,16 @@ function createPDF2( req, res, template_name) {
             if (err) {
                 res.send(err);
             } else {
-                res.send("File created successfully");
+				let contents = fs.readFileSync(path.join(__dirname, '/notifications.pdf'), 'utf8');
+		
+				// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
+				var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+				res.setHeader('Content-Length', stat.size);
+				res.setHeader('Content-Type', 'application/pdf');
+				res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
+
+				return res.send(contents).status(200);
+                console.log("File created successfully");
             }
         });
 		}
