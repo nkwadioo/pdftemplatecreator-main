@@ -5,6 +5,9 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 
+const ejs = require("ejs");
+const pdf = require("html-pdf");
+
 async function createPDF( req, res, teplate_name) {
     try {
 		var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
@@ -34,9 +37,8 @@ async function createPDF( req, res, teplate_name) {
 		// puppeteer.cl try closing or creating new puppeteer
 
 		const browser = await puppeteer.launch({
-			executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
+			// executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
 			args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-			
 			headless: true
 		});
 
@@ -79,6 +81,33 @@ async function createPDF( req, res, teplate_name) {
 
 } 
 
+function createPDF2( req, res, template_name) {
+	let filePath = path.join(__dirname, './template/', `${template_name}`);
+	ejs.renderFile(filePath, {student: {enquires: 'testing'}}, (err, data) => { // 
+		if (err) {
+          res.send(err);
+    	} else {
+			let options = {
+            "height": "11.25in",
+            "width": "8.5in",
+            "header": {
+                "height": "20mm"
+            },
+            "footer": {
+                "height": "20mm",
+            },
+        };
+        pdf.create(data, options).toFile("report.pdf", function (err, data) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send("File created successfully");
+            }
+        });
+		}
+	})
+}
+
 router.post('/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
@@ -96,7 +125,7 @@ router.post('/Tsteyl', function(req, res) {
 })
 
 router.get('/1', function(req, res) {
-    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+    createPDF2(req, res, 'test.ejs' );
 })
 
 router.post('/1', function(req, res) {
