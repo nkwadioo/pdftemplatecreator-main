@@ -49,7 +49,7 @@ async function createPDF( req, res, teplate_name) {
 		if (process.env.PORT) {
 
 			browser = await puppeteer.launch({
-				executablePath: '/home/site/wwwroot/node_modules/puppeteer/.local-chromium/linux-856583',
+				executablePath: '/home/site/wwwroot/node_modules/puppeteer/.local-chromium/linux-856583/chrome-linux/chrome.exe',
 				args: ['--no-sandbox', "--disabled-setupid-sandbox"],
 				headless: true
 			});
