@@ -7,13 +7,23 @@ const handlebars = require("handlebars");
 
 const ejs = require("ejs");
 const pdf = require("html-pdf");
+let formData = {logo: '<img src="#" alt="Department of Education logo">'}
+try {
+	let dir = path.join(`${__dirname}/template/`, "codeOfArms.svg");
+	const buffer = fs.readFileSync(dir);
+	// use the toString() method to convert
+	// Buffer into String
+	formData.logo = buffer.toString();
+}catch(e) {
+	console.log('could not load logo: >>> ' + e);
+}
 
 async function createPDF( req, res, teplate_name) {
     try {
 		var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
 		var template = handlebars.compile(templateHtml);
 		// let img = // get local path or generate base64 image
-		let data = req.body;
+		let data = {...formData, ...req.body} ;
 		var html = template(data);
 
 		var milis = new Date();
@@ -35,34 +45,45 @@ async function createPDF( req, res, teplate_name) {
 		}
 
 		// puppeteer.cl try closing or creating new puppeteer
+		let browser;
+		if (process.env.PORT) {
 
-		const browser = await puppeteer.launch({
-			// executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
-			args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-			headless: true
-		});
+			browser = await puppeteer.launch({
+				executablePath: '/home/runner/work/pdftemplatecreator-main/pdftemplatecreator-main/node_modules/puppeteer/.local-chromium/linux-856583/chrome.exe',
+				args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+				headless: true
+			});
+		} else {
+			browser = await puppeteer.launch({
+				// executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
+				args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+				headless: true
+			});
+		}
 
+		console.log('browser created')
 		var page = await browser.newPage();
 		
 		const response = await page.goto(`data:text/html;charset=UTF-8,<h1>Template</h1>`, {
-			waitUntil: 'domcontentloaded'
+			// waitUntil: 'domcontentloaded'
 		});
 
 		await page.setContent(
 			`${html}`
 		)
 
-		console.log(response.status())
 		
-		await page.pdf(options);
+		let document = await page.pdf(options);
+		document = document.toString()
 		await page.close();
 		await browser.close();
-
+		console.log(response.status(), 'created pdf,  to send it back to clint')
+		
 		let r = response['_status'];
 		if(response['_status'] !== 200){
 			return res.send({err: 'Error loading file'}).status(400);
 		}
-
+		
 		let contents = fs.readFileSync(path.join(__dirname, '/notifications.pdf'), 'utf8');
 		
 		// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
@@ -71,19 +92,18 @@ async function createPDF( req, res, teplate_name) {
 		res.setHeader('Content-Type', 'application/pdf');
 		res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
 
-		return res.send(contents).status(200);
-
+		console.log('send to clent')
+		return res.send(document).status(200);
+		
 	}catch(error) {
 		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
 	}
-
-    
 
 } 
 
 function createPDF2( req, res, template_name) {
 	let filePath = path.join(__dirname, './template/', `${template_name}`);
-	ejs.renderFile(filePath, {student: {enquires: 'testing'}}, (err, data) => { // 
+	ejs.renderFile(filePath, {data: {...formData, ...req.body}}, (err, data) => { // 
 		if (err) {
           res.send(err);
     	} else {
@@ -109,8 +129,8 @@ function createPDF2( req, res, template_name) {
 				res.setHeader('Content-Type', 'application/pdf');
 				res.setHeader('Content-Disposition', 'attachment; filename=createdPDF2.pdf');
 
-				return res.send(contents).status(200);
                 console.log("File created successfully");
+				return res.send(contents).status(200);
             }
         });
 		}
@@ -134,6 +154,9 @@ router.post('/Tsteyl', function(req, res) {
 })
 
 router.get('/1', function(req, res) {
+    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+})
+router.get('/1-1', function(req, res) {
     createPDF2(req, res, 'test.ejs' );
 })
 
