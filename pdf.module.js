@@ -2,15 +2,49 @@ const router = require('express').Router();
 
 const fs = require("fs");
 const path = require('path');
-const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 
-const ejs = require("ejs");
-const pdf = require("html-pdf");
+let puppeteer;
+let revisionInfo;
+console.log('INIT puppeteer')
+if (process.env.PORT) {
+    (async () => {
+
+        try {
+            puppeteer = require('puppeteer-core');
+            // console.log('TRYING TO FETCH BROWSER')
+            const browserFetcher = puppeteer.createBrowserFetcher();
+            revisionInfo = await browserFetcher.download('884014');
+            // console.log('BROWSER fetched successfully');
+        }catch (error) {
+            console.log(error)
+        }
+    })();
+}else {
+    puppeteer = require('puppeteer');
+}
+
+/*
+https://openbase.com/js/puppeteer-core/versions
+
+Chromium 92.0.4512.0 - Puppeteer v10.0.0 --- r 884014
+Chromium 91.0.4469.0 - Puppeteer v9.0.0
+Chromium 90.0.4427.0 - Puppeteer v8.0.0
+Chromium 90.0.4403.0 - Puppeteer v7.0.0
+Chromium 89.0.4389.0 - Puppeteer v6.0.0
+Chromium 88.0.4298.0 - Puppeteer v5.5.0
+Chromium 87.0.4272.0 - Puppeteer v5.4.0
+Chromium 86.0.4240.0 - Puppeteer v5.3.0
+Chromium 85.0.4182.0 - Puppeteer v5.2.1
+Chromium 84.0.4147.0 - Puppeteer v5.1.0
+Chromium 83.0.4103.0 - Puppeteer v3.1.0
+Chromium 81.0.4044.0 - Puppeteer v3.0.0
+*/
+
 let formData = {logo: '<img src="#" alt="Department of Education logo">'}
 try {
 	let dir = path.join(`${__dirname}/template/`, "codeOfArms.svg");
-	const buffer = fs.readFileSync(dir);
+	const buffer = fs.readFileSync(dir, 'utf-8');
 	// use the toString() method to convert
 	// Buffer into String
 	formData.logo = buffer.toString();
@@ -44,23 +78,22 @@ async function createPDF( req, res, teplate_name) {
 			path: pdfPath
 		}
 
-		// puppeteer.cl try closing or creating new puppeteer
 		let browser;
-		if (process.env.PORT) {
 
-			browser = await puppeteer.launch({
-				// executablePath: '/home/site/wwwroot/node_modules/puppeteer/.local-chromium/linux-856583/chrome-linux/chrome',
-				executablePath: process.env.PUPPETEER_EXEC_PATH,
-				args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-				headless: true
-			});
-		} else {
-			browser = await puppeteer.launch({
-				// executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
-				args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-				headless: true
-			});
-		}
+        console.log('LOADING ... browser');
+        if (!process.env.PORT) {
+            browser = await puppeteer.launch();
+            console.log('With sandbox')
+            
+        }else {
+            browser = await puppeteer.launch(
+                {
+                    executablePath: revisionInfo.executablePath,
+                    args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+                }
+            )
+            console.log('With OUT sandbox')
+        }
 
 		console.log('browser created')
 		var page = await browser.newPage();
@@ -78,65 +111,28 @@ async function createPDF( req, res, teplate_name) {
 		document = document.toString()
 		await page.close();
 		await browser.close();
-		console.log(response.status(), 'created pdf,  to send it back to clint')
+		console.log(response.status(), 'PDF Generated')
 		
 		let r = response['_status'];
 		if(response['_status'] !== 200){
 			return res.send({err: 'Error loading file'}).status(400);
 		}
 		
-		let contents = fs.readFileSync(path.join(__dirname, '/notifications.pdf'), 'utf8');
 		
-		// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-		var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+		let file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
+		let stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
 		res.setHeader('Content-Length', stat.size);
 		res.setHeader('Content-Type', 'application/pdf');
 		res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
 
-		console.log('send to clent')
-		return res.send(document).status(200);
+		console.log('send to client')
+		file.pipe(res);
 		
 	}catch(error) {
 		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
 	}
 
 } 
-
-function createPDF2( req, res, template_name) {
-	let filePath = path.join(__dirname, './template/', `${template_name}`);
-	ejs.renderFile(filePath, {data: {...formData, ...req.body}}, (err, data) => { // 
-		if (err) {
-          res.send(err);
-    	} else {
-			let options = {
-            "height": "11.25in",
-            "width": "8.5in",
-            "header": {
-                "height": "20mm"
-            },
-            "footer": {
-                "height": "20mm",
-            },
-        };
-        pdf.create(data, options).toFile("report.pdf", function (err, data) {
-            if (err) {
-                res.send(err);
-            } else {
-				let contents = fs.readFileSync(path.join(__dirname, '/report.pdf'), 'utf8');
-		
-				// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-				var stat = fs.statSync(path.join(__dirname, '/report.pdf'));
-				res.setHeader('Content-Length', stat.size);
-				res.setHeader('Content-Type', 'application/pdf');
-				res.setHeader('Content-Disposition', 'attachment; filename=createdPDF2.pdf');
-
-                console.log("File created successfully");
-				return res.send(contents).status(200);
-            }
-        });
-		}
-	})
-}
 
 router.post('/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
@@ -156,9 +152,6 @@ router.post('/Tsteyl', function(req, res) {
 
 router.get('/1', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
-})
-router.get('/1-1', function(req, res) {
-    createPDF2(req, res, 'test.ejs' );
 })
 
 router.post('/1', function(req, res) {
