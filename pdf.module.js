@@ -5,6 +5,7 @@ const path = require('path');
 const handlebars = require("handlebars");
 
 let puppeteer;
+let revisionInfo;
 console.log('INIT puppeteer')
 if (process.env.PORT) {
     (async () => {
