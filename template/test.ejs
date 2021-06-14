@@ -172,8 +172,7 @@
 <body>
   <div class="wrapper">
     <div class="logo">
-      {{{logo}}}
-        
+      <img src="{{image}}" alt="">
       <div class="dept">
         <h4>higher education <br>& training</h4>
         <p>Department:</p>
@@ -186,13 +185,13 @@
     <section>
       <div class="dates">
         <div class="enquires">
-          <p>Enquires: </p><span>{{enquires}} </span>
+          <p>Enquires: </p><span><%= student.enquires %> </span>
         </div>
         <div class="tel">
-          <p>Tel No: </p><span>{{tell}} </span>
+          <p>Tel No: </p><span><%= student.tell %> </span>
         </div>
         <div class="tel">
-          <p>Date: </p><span>{{create_date}} </span>
+          <p>Date: </p><span><%= student.create_date %> </span>
         </div>
       </div>
       <div class="candidate">
@@ -208,7 +207,7 @@
       <p class="sect">You are hereby notified that your application for a trade test is approved according to the
         information below:</p>
       <div class="appInfo">
-        <p>Reference No: </p><span>{{ref_no}}</span>
+        <p>Reference No: </p><span><%= student.ref_no %></span>
         <p>Trade Test Centre: </p><span>Centurion Olivenbosh</span>
         <p>Trade: </p><span>Machenical Trade 02</span>
         <p>OFO code: </p><span>MA05e202</span>
