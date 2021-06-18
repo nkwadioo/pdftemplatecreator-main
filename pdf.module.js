@@ -107,8 +107,8 @@ async function createPDF( req, res, teplate_name) {
 		)
 
 		
-		let document = await page.pdf(options);
-		document = document.toString()
+		let pdfFile = await page.pdf(options);
+		//pdfFile = pdfFile.toString()
 		await page.close();
 		await browser.close();
 		console.log(response.status(), 'PDF Generated')
