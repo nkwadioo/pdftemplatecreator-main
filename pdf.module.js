@@ -121,12 +121,12 @@ async function createPDF( req, res, teplate_name) {
 		
 		let document = fs.readFileSync(path.join(__dirname, '/notifications.pdf')).toString('base64');
 		// let document = fs.createReadStream((path.join(__dirname, '/invoice.pdf')));
-		var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
-			response.setHeader('Content-Length', stat.size);
+		// var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+			// res.setHeader('Content-Length', stat.size);
 			// response.setHeader('Content-Type', 'application/pdf');
 			// response.setHeader('Content-Disposition', 'attachment; filename=invoice.pdf');
 		// document.pipe(response);
-		return response.send({isfile: `data:application/pdf;base64,${document}`}).status(200)
+		return res.send({isfile: `data:application/pdf;base64,${document}`}).status(200)
 		
 	}catch(error) {
 		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
