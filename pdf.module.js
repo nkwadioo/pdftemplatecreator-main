@@ -5,8 +5,53 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 
-const ejs = require("ejs");
-const pdf = require("html-pdf");
+let puppeteer;
+let revisionInfo;
+console.log('INIT puppeteer')
+if (process.env.PORT) {
+    (async () => {
+
+        try {
+            puppeteer = require('puppeteer-core');
+            // console.log('TRYING TO FETCH BROWSER')
+            const browserFetcher = puppeteer.createBrowserFetcher();
+            revisionInfo = await browserFetcher.download('884014');
+            // console.log('BROWSER fetched successfully');
+        }catch (error) {
+            console.log(error)
+        }
+    })();
+}else {
+    puppeteer = require('puppeteer');
+}
+
+/*
+https://openbase.com/js/puppeteer-core/versions
+
+Chromium 92.0.4512.0 - Puppeteer v10.0.0 --- r 884014
+Chromium 91.0.4469.0 - Puppeteer v9.0.0
+Chromium 90.0.4427.0 - Puppeteer v8.0.0
+Chromium 90.0.4403.0 - Puppeteer v7.0.0
+Chromium 89.0.4389.0 - Puppeteer v6.0.0
+Chromium 88.0.4298.0 - Puppeteer v5.5.0
+Chromium 87.0.4272.0 - Puppeteer v5.4.0
+Chromium 86.0.4240.0 - Puppeteer v5.3.0
+Chromium 85.0.4182.0 - Puppeteer v5.2.1
+Chromium 84.0.4147.0 - Puppeteer v5.1.0
+Chromium 83.0.4103.0 - Puppeteer v3.1.0
+Chromium 81.0.4044.0 - Puppeteer v3.0.0
+*/
+
+let formData = {logo: '<img src="#" alt="Department of Education logo">'}
+try {
+	let dir = path.join(`${__dirname}/template/`, "codeOfArms.svg");
+	const buffer = fs.readFileSync(dir, 'utf-8');
+	// use the toString() method to convert
+	// Buffer into String
+	formData.logo = buffer.toString();
+}catch(e) {
+	console.log('could not load logo: >>> ' + e);
+}
 
 async function createPDF( req, res, teplate_name) {
     try {
