@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const generatepdfNotification = {};
 
 const fs = require("fs");
 const path = require('path');
@@ -8,20 +9,20 @@ let puppeteer;
 let revisionInfo;
 console.log('INIT puppeteer')
 if (process.env.PORT) {
-    (async () => {
+	(async () => {
 
-        try {
-            puppeteer = require('puppeteer-core');
-            // console.log('TRYING TO FETCH BROWSER')
-            const browserFetcher = puppeteer.createBrowserFetcher();
-            revisionInfo = await browserFetcher.download('884014');
-            // console.log('BROWSER fetched successfully');
-        }catch (error) {
-            console.log(error)
-        }
-    })();
-}else {
-    puppeteer = require('puppeteer');
+		try {
+			puppeteer = require('puppeteer-core');
+			// console.log('TRYING TO FETCH BROWSER')
+			const browserFetcher = puppeteer.createBrowserFetcher();
+			revisionInfo = await browserFetcher.download('884014');
+			// console.log('BROWSER fetched successfully');
+		} catch (error) {
+			console.log(error)
+		}
+	})();
+} else {
+	puppeteer = require('puppeteer');
 }
 
 /*
@@ -41,23 +42,23 @@ Chromium 83.0.4103.0 - Puppeteer v3.1.0
 Chromium 81.0.4044.0 - Puppeteer v3.0.0
 */
 
-let formData = {logo: '<img src="#" alt="Department of Education logo">'}
+let formData = { logo: '<img src="#" alt="Department of Education logo">' }
 try {
 	let dir = path.join(`${__dirname}/template/`, "codeOfArms.svg");
 	const buffer = fs.readFileSync(dir, 'utf-8');
 	// use the toString() method to convert
 	// Buffer into String
 	formData.logo = buffer.toString();
-}catch(e) {
+} catch (e) {
 	console.log('could not load logo: >>> ' + e);
 }
 
-async function createPDF( req, res, teplate_name) {
-    try {
+async function createPDF(req, res, teplate_name) {
+	try {
 		var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
 		var template = handlebars.compile(templateHtml);
 		// let img = // get local path or generate base64 image
-		let data = {...formData, ...req.body} ;
+		let data = { ...formData, ...req.body };
 		var html = template(data);
 
 		var milis = new Date();
@@ -80,24 +81,24 @@ async function createPDF( req, res, teplate_name) {
 
 		let browser;
 
-        console.log('LOADING ... browser');
-        if (!process.env.PORT) {
-            browser = await puppeteer.launch();
-            console.log('With sandbox')
-            
-        }else {
-            browser = await puppeteer.launch(
-                {
-                    executablePath: revisionInfo.executablePath,
-                    args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-                }
-            )
-            console.log('With OUT sandbox')
-        }
+		console.log('LOADING ... browser');
+		if (!process.env.PORT) {
+			browser = await puppeteer.launch();
+			console.log('With sandbox')
+
+		} else {
+			browser = await puppeteer.launch(
+				{
+					executablePath: revisionInfo.executablePath,
+					args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+				}
+			)
+			console.log('With OUT sandbox')
+		}
 
 		console.log('browser created')
 		var page = await browser.newPage();
-		
+
 		const response = await page.goto(`data:text/html;charset=UTF-8,<h1>Template</h1>`, {
 			// waitUntil: 'domcontentloaded'
 		});
@@ -106,79 +107,153 @@ async function createPDF( req, res, teplate_name) {
 			`${html}`
 		)
 
-		
-		let document = await page.pdf(options);
-		document = document.toString()
+
+		let pdfFile = await page.pdf(options);
+		//pdfFile = pdfFile.toString()
 		await page.close();
 		await browser.close();
 		console.log(response.status(), 'PDF Generated')
-		
-		let r = response['_status'];
-		if(response['_status'] !== 200){
-			return res.send({err: 'Error loading file'}).status(400);
-		}
-		
-		
-		let file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-		let stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
-		res.setHeader('Content-Length', stat.size);
-		res.setHeader('Content-Type', 'application/pdf');
-		res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
 
-		console.log('send to client')
-		file.pipe(res);
-		
-	}catch(error) {
-		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
+		let r = response['_status'];
+		if (response['_status'] !== 200) {
+			return res.send({ err: 'Error loading file' }).status(400);
+		}
+
+
+		let document = fs.readFileSync(path.join(__dirname, '/notifications.pdf')).toString('base64');
+		// let document = fs.createReadStream((path.join(__dirname, '/invoice.pdf')));
+		// var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+		// res.setHeader('Content-Length', stat.size);
+		// response.setHeader('Content-Type', 'application/pdf');
+		// response.setHeader('Content-Disposition', 'attachment; filename=invoice.pdf');
+		// document.pipe(response);
+		return res.send({ isfile: `data:application/pdf;base64,${document}` }).status(200)
+
+	} catch (error) {
+		return res.send({ err: `Error linking fill / puppeteer: ${error}` }).status(400);
 	}
 
-} 
+}
 
-router.post('/notification', function(req, res) {
-    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+router.post('/notification', function (req, res) {
+	createPDF(req, res, 'notificationOfTradeTestDate.html');
 })
-router.post('/appointSME', function(req, res) {
-    createPDF(req, res, 'appointSME.html' );
+router.post('/appointSME', function (req, res) {
+	createPDF(req, res, 'appointSME.html');
 })
-router.post('/feedback', function(req, res) {
-    createPDF(req, res, 'feedback.html' );
+router.post('/feedback', function (req, res) {
+	createPDF(req, res, 'feedback.html');
 })
-router.post('/QTCO', function(req, res) {
-    createPDF(req, res, 'QTCO.html' );
+router.post('/QTCO', function (req, res) {
+	createPDF(req, res, 'QTCO.html');
 })
-router.post('/Tsteyl', function(req, res) {
-    createPDF(req, res, 'Tsteyl.html' );
-})
-
-router.get('/1', function(req, res) {
-    createPDF(req, res, 'notificationOfTradeTestDate.html' );
+router.post('/Tsteyl', function (req, res) {
+	createPDF(req, res, 'Tsteyl.html');
 })
 
-router.post('/1', function(req, res) {
-    createPDF(req, res, 'notificationOfTradeTestDate.html' );
-})
-router.post('/2', function(req, res) {
-    createPDF(req, res, 'appointSME.html' );
-})
-router.post('/3', function(req, res) {
-    createPDF(req, res, 'feedback.html' );
-})
-router.post('/4', function(req, res) {
-    createPDF(req, res, 'QTCO.html' );
-})
-router.post('/5', function(req, res) {
-    createPDF(req, res, 'Tsteyl.html' );
-})
-router.post('/6', function(req, res) {
-    createPDF(req, res, 'AsswesorV2Letter.html' );
-})
-router.post('/7', function(req, res) {
-    createPDF(req, res, 'legacyTrade.html' );
-})
-router.post('/8', function(req, res) {
-    createPDF(req, res, 'TechnicalAA.html' );
+router.get('/1', function (req, res) {
+	createPDF(req, res, 'notificationOfTradeTestDate.html');
 })
 
+router.post('/generatepdfNotification', function (req, res) {
+	createPDF(req, res, 'notificationOfTradeTestDate.html');
+})
+router.post('/AppointSME', function (req, res) {
+	createPDF(req, res, 'appointSME.html');
+})
+router.post('/AppealReport', function (req, res) {
+	createPDF(req, res, 'feedback.html');
+})
+router.post('/Approval', function (req, res) {
+	createPDF(req, res, 'QTCO.html');
+})
+router.post('/Auditing', function (req, res) {
+	createPDF(req, res, 'Tsteyl.html');
+})
+router.post('/Registration', function (req, res) {
+	createPDF(req, res, 'AsswesorV2Letter.html');
+})
+router.post('/7', function (req, res) {
+	createPDF(req, res, 'legacyTrade.html');
+})
+router.post('/Accreditation', function (req, res) {
+	createPDF(req, res, 'TechnicalAA.html');
+})
+
+
+{
+	const generatepdfNotification = {
+		ref_no: Number,
+		trade_test_centre: String,
+		trade: String,
+		ofocode: Number,
+		speciliasation: String,
+		trade_test_date: Date,
+		time: Number,
+		workshop_no: Number,
+		requirements: String,
+
+	},
+		AppointSME = {
+			investigator: String,
+			trade: String,
+			appeal_investigator: String,
+			date: Date,
+			trade_test_centre_name: String,
+			physical_address: String,
+			contact_person: String,
+			contact_no: Number,
+			email: String
+		},
+
+		Registration = {
+			reg_dateF: Date,
+			reg_dateT: Date,
+			reg_dateA: Date,
+			reg_dateM: Date,
+			trade_title: String,
+			speciliasation: String,
+
+		},
+
+		Auditing = {
+			accreditation_audit: String,
+			trade: String,
+		},
+
+
+		AppealReport = {
+			candidate: String,
+			trade_test_centre_name: String,
+			complaint: String,
+			date: Date,
+			investigation: String,
+			agreement: String,
+			feedback: String,
+			additional_info: String,
+			conclusion: String,
+			background: String,
+		},
+
+		Approval = {
+			trade_test_centre_name : String,
+			centre_num : Number,
+			physical_address : String,
+			OFOCode : Number,
+			specialisation : String,
+			trade_title : String,
+			start_date : Date,
+			end_date : Date,
+		},
+
+		Accreditation = {
+			trade_test_centre_name : String,
+			physical_address : String,
+			contact_person : String,
+			contact_details : Number,
+			email : String,
+		}
+		}
 
 
 module.exports = router;
