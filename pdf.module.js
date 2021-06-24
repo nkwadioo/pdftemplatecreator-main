@@ -2,7 +2,6 @@ const router = require('express').Router();
 
 const fs = require("fs");
 const path = require('path');
-const puppeteer = require('puppeteer');
 const handlebars = require("handlebars");
 
 let puppeteer;
@@ -58,7 +57,7 @@ async function createPDF( req, res, teplate_name) {
 		var templateHtml = fs.readFileSync(path.join(`${__dirname}/template/`, teplate_name), 'utf8');
 		var template = handlebars.compile(templateHtml);
 		// let img = // get local path or generate base64 image
-		let data = req.body;
+		let data = {...formData, ...req.body} ;
 		var html = template(data);
 
 		var milis = new Date();
@@ -79,88 +78,61 @@ async function createPDF( req, res, teplate_name) {
 			path: pdfPath
 		}
 
-		// puppeteer.cl try closing or creating new puppeteer
+		let browser;
 
-		const browser = await puppeteer.launch({
-			// executablePath: '/usr/local/lib/node_modules/puppeteer/.local-chromium/linux-884/chrome.exe',
-			args: ['--no-sandbox', "--disabled-setupid-sandbox"],
-			headless: true
-		});
+        console.log('LOADING ... browser');
+        if (!process.env.PORT) {
+            browser = await puppeteer.launch();
+            console.log('With sandbox')
+            
+        }else {
+            browser = await puppeteer.launch(
+                {
+                    executablePath: revisionInfo.executablePath,
+                    args: ['--no-sandbox', "--disabled-setupid-sandbox"],
+                }
+            )
+            console.log('With OUT sandbox')
+        }
 
+		console.log('browser created')
 		var page = await browser.newPage();
 		
 		const response = await page.goto(`data:text/html;charset=UTF-8,<h1>Template</h1>`, {
-			waitUntil: 'domcontentloaded'
+			// waitUntil: 'domcontentloaded'
 		});
 
 		await page.setContent(
 			`${html}`
 		)
 
-		console.log(response.status())
 		
-		await page.pdf(options);
+		let document = await page.pdf(options);
+		document = document.toString()
 		await page.close();
 		await browser.close();
-
+		console.log(response.status(), 'PDF Generated')
+		
 		let r = response['_status'];
 		if(response['_status'] !== 200){
 			return res.send({err: 'Error loading file'}).status(400);
 		}
-
-		let contents = fs.readFileSync(path.join(__dirname, '/notifications.pdf'), 'utf8');
 		
-		// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-		var stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
+		
+		let file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
+		let stat = fs.statSync(path.join(__dirname, '/notifications.pdf'));
 		res.setHeader('Content-Length', stat.size);
 		res.setHeader('Content-Type', 'application/pdf');
 		res.setHeader('Content-Disposition', 'attachment; filename=createdPDF.pdf');
 
-		return res.send(contents).status(200);
-
+		console.log('send to client')
+		file.pipe(res);
+		
 	}catch(error) {
 		return res.send({err: `Error linking fill / puppeteer: ${error}`}).status(400);
 	}
 
-    
-
 } 
-
-function createPDF2( req, res, template_name) {
-	let filePath = path.join(__dirname, './template/', `${template_name}`);
-	ejs.renderFile(filePath, {student: {enquires: 'testing'}}, (err, data) => { // 
-		if (err) {
-          res.send(err);
-    	} else {
-			let options = {
-            "height": "11.25in",
-            "width": "8.5in",
-            "header": {
-                "height": "20mm"
-            },
-            "footer": {
-                "height": "20mm",
-            },
-        };
-        pdf.create(data, options).toFile("report.pdf", function (err, data) {
-            if (err) {
-                res.send(err);
-            } else {
-				let contents = fs.readFileSync(path.join(__dirname, '/report.pdf'), 'utf8');
-		
-				// var file = fs.createReadStream(path.join(__dirname, '/notifications.pdf'));
-				var stat = fs.statSync(path.join(__dirname, '/report.pdf'));
-				res.setHeader('Content-Length', stat.size);
-				res.setHeader('Content-Type', 'application/pdf');
-				res.setHeader('Content-Disposition', 'attachment; filename=createdPDF2.pdf');
-
-				return res.send(contents).status(200);
-                console.log("File created successfully");
-            }
-        });
-		}
-	})
-}
 
 router.post('/notification', function(req, res) {
     createPDF(req, res, 'notificationOfTradeTestDate.html' );
@@ -179,7 +151,7 @@ router.post('/Tsteyl', function(req, res) {
 })
 
 router.get('/1', function(req, res) {
-    createPDF2(req, res, 'test.ejs' );
+    createPDF(req, res, 'notificationOfTradeTestDate.html' );
 })
 
 router.post('/1', function(req, res) {
