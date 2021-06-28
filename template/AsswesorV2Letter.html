@@ -225,7 +225,8 @@
 <body>
     <div class="wrapper">
         <div class="logo">
-            <img src="{{image}}" alt="">
+            {{{logo}}}
+           
             <div class="dept">
                 <h4>higher education <br>& training</h4>
                 <p>Department:</p>
@@ -306,29 +307,19 @@
 
                         <tr>
                             <td rowspan="1" colspan="2">Registration Date</td>
-                            <td>From
-                                20 Apr
-                                2021
-                            </td>
-                            <td>To
-                                19 Apr 2026
-                            </td>
-                            <td>From
-                                20 Apr
-                                2021
-                            </td>
-                            <td>To
-                                19 Apr 2026
-                            </td>
+                            <td>{{reg_dateF}}</td>
+                            <td>{{reg_dateT}}</td>
+                            <td>{{reg_dateA}}</td>
+                            <td>{{reg_dateM}}</td>
                         </tr>
                         <tr>
                             <td rowspan="1" colspan="1">Centre Name</td>
                             <td colspan="5"></td>
                         </tr>
                         <tr>
-                            <td rowspan="1" colspan="1">OFO Code</td>
-                            <td colspan="2">Trade Title</td>
-                            <td colspan="3">Specialisation / Alternative Title</td>
+                            <td rowspan="1" colspan="1">OFOCode</td>
+                            <td colspan="2">{{trade_title}}</td>
+                            <td colspan="3">{{specialisation}}</td>
 
                         </tr>
 

@@ -218,6 +218,11 @@
             margin-top: 3.5em;
         }
 
+        #d {
+            height: auto;
+            width: 50%;
+        }
+
         .address {
             font-size: 0.7rem;
         }
@@ -227,7 +232,7 @@
 <body>
     <div class="wrapper">
         <div class="logo">
-            <img src="{{image}}" alt="">
+            {{{logo}}}
             <div class="dept">
                 <h4>higher education <br>& training</h4>
                 <p>Department:</p>
@@ -283,7 +288,7 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Auditor</td>
-                            <td></td>
+                            <td>{{accreditation_audit}}</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -328,8 +333,8 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Audit</td>
-                            <td>X</td>
-                            <td>31/10/2019</td>
+                            <td>{{accreditation_audit}}</td>
+                            <td>{{trade}}</td>
 
 
 
@@ -381,11 +386,11 @@
                     <tbody>
                         <tr>
                             <td>Trade Test Centre Name</td>
-                            <td>Belcomec Training Pty Ltd </td>
+                            <td>{{belcomec_training_pty_ltd </td>
                         </tr>
                         <tr>
                             <td>Physical address</td>
-                            <td>7 Fabriek Street, Industria, George, Western Cape</td>
+                            <td>{{7_fabriek_street_industria_george_western_cape</td>
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
@@ -393,11 +398,11 @@
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td>082 570 7892</td>
+                            <td>{{0825707892}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td>ronel@belcomectraining.co.za</td>
+                            <td>{{ronel@belcomectraining.co.za}}</td>
                         </tr>
 
                     </tbody>
@@ -427,30 +432,31 @@
             <div class="SIG">
                 <div class="sign-field">
                     <p>
-                    <hr class="break">
+                        <hr class="break">
                     <p><b>Ms Heilene Steenkamp</b></p>
                     <p><b>Deputy Director: NAMB</b></p>
                     </p>
                     <p id="sign">
                         <hr class="break">
-                        Signature
+                        <p><b>T Steyl</b></p>
+                        <p><b>SME:Auto Body Repairer</b></p>
                     </p>
                 </div>
+
                 <br>
 
                 <br>
-                I hereby accept the appointment and function as indicated above.
-
+                
                 <div class="sign-field" id="date">
                     <p>
                         <hr class="break">
-                        <p><b>T Steyl</b></p>
-                        <p><b>SME: Auto Body</b></p>
+                    <p><b>Date</b></p>
                     </p>
                     <p class="para2">
-                       
+
                         <hr class="break">
-                        Date
+                        <p><b>Date</b></p>
+
                     </p>
                 </div>
             </div>
