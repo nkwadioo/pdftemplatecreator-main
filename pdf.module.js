@@ -180,80 +180,16 @@ router.post('/Accreditation', function (req, res) {
 	createPDF(req, res, 'TechnicalAA.html');
 })
 
+router.post('/TradeTestDate', function (req, res) {
+	createPDF(req, res, 'TradeTestDate.html');
+})
+router.post('/TradeTestFeedbackReport', function (req, res) {
+	createPDF(req, res, 'TradeTestFeedbackReport.html');
+})
+router.post('/TradeTestResults', function (req, res) {
+	createPDF(req, res, 'TradeTestResults.html');
+})
 
-{
-	const generatepdfNotification = {
-		ref_no: Number,
-		trade_test_centre: String,
-		trade: String,
-		ofocode: Number,
-		speciliasation: String,
-		trade_test_date: Date,
-		time: Number,
-		workshop_no: Number,
-		requirements: String,
-
-	},
-		AppointSME = {
-			investigator: String,
-			trade: String,
-			appeal_investigator: String,
-			date: Date,
-			trade_test_centre_name: String,
-			physical_address: String,
-			contact_person: String,
-			contact_no: Number,
-			email: String
-		},
-
-		Registration = {
-			reg_dateF: Date,
-			reg_dateT: Date,
-			reg_dateA: Date,
-			reg_dateM: Date,
-			trade_title: String,
-			speciliasation: String,
-
-		},
-
-		Auditing = {
-			accreditation_audit: String,
-			trade: String,
-		},
-
-
-		AppealReport = {
-			candidate: String,
-			trade_test_centre_name: String,
-			complaint: String,
-			date: Date,
-			investigation: String,
-			agreement: String,
-			feedback: String,
-			additional_info: String,
-			conclusion: String,
-			background: String,
-		},
-
-		Approval = {
-			trade_test_centre_name : String,
-			centre_num : Number,
-			physical_address : String,
-			OFOCode : Number,
-			specialisation : String,
-			trade_title : String,
-			start_date : Date,
-			end_date : Date,
-		},
-
-		Accreditation = {
-			trade_test_centre_name : String,
-			physical_address : String,
-			contact_person : String,
-			contact_details : Number,
-			email : String,
-		}
-		}
 
 
 module.exports = router;
