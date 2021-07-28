@@ -216,6 +216,11 @@
             margin-top: 3.5em;
         }
 
+        #d {
+            height: auto;
+            width: 50%;
+        }
+
 
         .address {
             font-size: 0.7rem;
@@ -226,7 +231,7 @@
 <body>
     <div class="wrapper">
         <div class="logo">
-            <img src="{{image}}" alt="">
+            {{{logo}}}
             <div class="dept">
                 <h4>higher education <br>& training</h4>
                 <p>Department:</p>
@@ -290,8 +295,8 @@
                         </tr>
                         <tr>
                             <td>Investigator</td>
-                            <td>X</td>
-                            <td>Boilermaker</td>
+                            <td>{{investigator}}</td>
+                            <td>{{trade}}</td>
                         </tr>
                         <tr>
                             <td>External Moderator</td>
@@ -337,8 +342,8 @@
                         </tr>
                         <tr>
                             <td>Appeal Investigation</td>
-                            <td>X</td>
-                            <td>27/11/2019</td>
+                            <td>{{appeal_investigator}}</td>
+                            <td>{{date}}</td>
                         </tr>
 
                         <tr>
@@ -372,32 +377,38 @@
                 <br>
 
                 <br>
-
-                <table>
+                <!-- This table is the one thats causing problems -->
+                <!-- <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
                             <td>Trade Test Centre Name</td>
-                            <td>Majuba Center</td>
+                            <td>{{trade_test_centre_name}}</td>
                         </tr>
                         <tr>
                             <td>Physical address</td>
-                            <td>114 Indlela </td>
+                            <td>{{physical address}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
-                            <td>Mr Sam</td>
+                            <td>{{contact_person}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td>0112345678</td>
+                            <td>{{contact_no}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td>sam@majubacenter.co.za</td>
+                            <td>{{email}}</td>
                         </tr>
 
                     </tbody>
-                </table>
+                </table> -->
 
                 <br>
 
@@ -454,7 +465,10 @@
                     </p> -->
                 </div>
             </div>
-            <p>I hereby accept the appointment and function as indicated above.</p>
+
+            <br>
+
+            <div id="d">I hereby accept the appointment and function as indicated above.</div>
 
             <br>
 
@@ -463,9 +477,9 @@
             <div class="SIG">
                 <div class="sign-field">
                     <p>
-                        
+
                         <hr class="break">
-                        Mr/Ms	
+                        Mr/Ms
 
                     </p>
                     <!-- <p id="sign"> 

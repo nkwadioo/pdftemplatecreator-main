@@ -89,8 +89,6 @@
             border-bottom: 1px solid black;
         }
 
-
-
         section .candidate {
             display: flex;
             flex-direction: column;
@@ -200,7 +198,7 @@
 
         .break {
             width: 10em;
-            border: 2px solid black;
+            border: 1px solid black;
             margin-left: 0;
         }
 
@@ -223,6 +221,7 @@
             width: 50%;
         }
 
+
         .address {
             font-size: 0.7rem;
         }
@@ -242,27 +241,23 @@
         </div>
         <p class="address">Old Pretoria/Kempton Park Road, Private Bag X5, Olifantsfontein, 1665 Tel (011)206 1000 Fax
             (011)316 4763</p>
+        <p class="address">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956
+            Website: www.dhet.gov.za
+        </p>
+        <p class="address">Website: www.dhet.gov.za </p>
         <section>
             <div class="dates">
                 <div class="enquires">
                     <p>Enquires: </p><span>Ms. Heilene Steenkamp</span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>011 206 1124/6</span>
+                    <p>Tel No: </p><span>011 206 1126</span>
                 </div>
                 <div class="email">
                     <p>Email: </p><span>Steenkamp.h@dhet.gov.za</span>
                 </div>
             </div>
-            <br>
-
-            <br>
-
-            <p>Dear T Steyl</p>
-
-            <br>
-
-
+            <p>Dear Mr/Ms</p>
             <br>
             <h4>Re: Appointment in terms of the NAMB Service Level Agreement with accredited Trade Test Centre.</h4>
             <br>
@@ -288,8 +283,10 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Auditor</td>
-                            <td>{{accreditation_audit}}</td>
                             <td></td>
+                            <td></td>
+
+
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitor</td>
@@ -298,8 +295,8 @@
                         </tr>
                         <tr>
                             <td>Investigator</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{investigator}}</td>
+                            <td>{{trade}}</td>
                         </tr>
                         <tr>
                             <td>External Moderator</td>
@@ -333,9 +330,8 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Audit</td>
-                            <td>{{accreditation_audit}}</td>
-                            <td>{{trade}}</td>
-
+                            <td></td>
+                            <td></td>
 
 
                         </tr>
@@ -346,8 +342,8 @@
                         </tr>
                         <tr>
                             <td>Appeal Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ppeal_investigator}}</td>
+                            <td>{{date}}</td>
                         </tr>
 
                         <tr>
@@ -386,23 +382,23 @@
                     <tbody>
                         <tr>
                             <td>Trade Test Centre Name</td>
-                            <td>{{belcomec_training_pty_ltd </td>
+                            <td>{{trade_test_centre_name}}</td>
                         </tr>
                         <tr>
                             <td>Physical address</td>
-                            <td>{{7_fabriek_street_industria_george_western_cape</td>
+                            <td>{{physical address}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
-                            <td></td>
+                            <td>{{contact_person}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td>{{0825707892}}</td>
+                            <td>{{contact_no}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td>{{ronel@belcomectraining.co.za}}</td>
+                            <td>{{email}}</td>
                         </tr>
 
                     </tbody>
@@ -418,11 +414,17 @@
                 <p>NAMB identified persons contact detail</p>
                 <br>
 
-                <p><b>Mr Muzi Zulu</b></p>
-                <p>011 206 1186</p>
-
-
-
+                <div class="contact">
+                    <div class="enquires">
+                        <p>Ms. Kelebogile Mafikeng</p>
+                    </div>
+                    <div class="tel">
+                        <p>011 206 1182</p>
+                    </div>
+                    <div class="email">
+                        <p>Mafikeng.k@dhet.gov.za</p>
+                    </div>
+                </div>
                 <br>
                 <p>Your support and commitment in this regard is appreciated.</p>
             </div>
@@ -432,35 +434,67 @@
             <div class="SIG">
                 <div class="sign-field">
                     <p>
+                        Mr Jowie Bopape
                         <hr class="break">
-                    <p><b>Ms Heilene Steenkamp</b></p>
-                    <p><b>Deputy Director: NAMB</b></p>
+                        Director
+                        NAMB
+
                     </p>
-                    <p id="sign">
-                        <hr class="break">
-                        <p><b>T Steyl</b></p>
-                        <p><b>SME:Auto Body Repairer</b></p>
-                    </p>
+                    <!-- <p id="sign"> 
+                            <hr class="break">
+                            date
+                        </p> -->
                 </div>
 
-                <br>
-
-                <br>
-                
                 <div class="sign-field" id="date">
                     <p>
-                        <hr class="break">
-                    <p><b>Date</b></p>
-                    </p>
-                    <p class="para2">
 
                         <hr class="break">
-                        <p><b>Date</b></p>
 
                     </p>
+                    <!-- <p class="para2"> 
+                        23 March 2021  
+                        <hr class="break">
+                        DATE
+                    </p> -->
                 </div>
             </div>
 
+            <br>
+
+            <div id="d">I hereby accept the appointment and function as indicated above.</div>
+
+            <br>
+
+            <br>
+
+            <div class="SIG">
+                <div class="sign-field">
+                    <p>
+
+                        <hr class="break">
+                        Mr/Ms
+
+                    </p>
+                    <!-- <p id="sign"> 
+                            <hr class="break">
+                            date
+                        </p> -->
+                </div>
+
+                <div class="sign-field" id="date">
+                    <p>
+
+                        <hr class="break">
+
+                    </p>
+                    <!-- <p class="para2"> 
+                        23 March 2021  
+                        <hr class="break">
+                        DATE
+                    </p> -->
+                </div>
+            </div>
         </footer>
     </div>
 

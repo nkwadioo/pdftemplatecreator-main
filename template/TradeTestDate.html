@@ -89,8 +89,6 @@
             border-bottom: 1px solid black;
         }
 
-
-
         section .candidate {
             display: flex;
             flex-direction: column;
@@ -179,23 +177,27 @@
             border-bottom: 1px solid black;
         }
 
+        .parent {
+            width: 40%;
+        }
 
+        .parent p:first-of-type {
+            margin: 1.5em 0px 1.5em 0px
+        }
 
-        .Private {
+        .child {
             margin: 1.5em 0px 0px 5%;
-            font-size: 0.7rem;
         }
 
-        .cape {
-            margin: 1.5em 0px 0px 2%;
-            font-size: 0.7rem;
+
+        .dec {
+
+            margin: 1.5em 0px 0px 15%;
         }
 
-        .gov {
-            margin: 1.5em 0px 0px 10%;
-            font-size: 0.7rem;
+        .tools {
+            width: 95%;
         }
-
 
         footer {
             margin-top: 2rem;
@@ -211,27 +213,34 @@
             font-size: 0.6rem;
         }
 
-        .SIG{
-            width: 100%; margin: 0px 30px 0px 30px;
+        .SIG {
+            width: 100%;
+            margin: 0px 30px 0px 30px;
         }
 
         .break {
             width: 10em;
-            border: 1px  solid black;
+            border: 1px solid black;
             margin-left: 0;
         }
 
         .sign-field {
-            float: left; width: 50%;
+            float: left;
+            width: 50%;
             text-align: left;
         }
 
-        .para2{
+        .para2 {
             margin-top: 2em;
         }
 
         #sign {
             margin-top: 3.5em;
+        }
+
+        #d {
+            height: auto;
+            width: 50%;
         }
 
 
@@ -243,123 +252,129 @@
 
 <body>
     <div class="wrapper">
-        <div class="logo">
-           {{{logo}}}
-            <div class="dept">
-                <h4>higher education <br>& training</h4>
-                <p>Department:</p>
-                <p>Higher Education and Training</p>
-                <b>REPUBLIC OF SOUTH AFRICA</b>
-            </div>
-        </div>
-        <p class="Private">Private Bag X393, Pretoria, 0001, Tel (012) 312 5555, Fax (012) 323 5618</p>
-
-        <br>
-
-        <p class="cape">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956</p>
-
-        <br>
-
-        <p class="gov">Website: www.dhet.gov.za</p>
-
-        <br>
-
-        <br>
-        <p class="address">Enquiries: H. Steenkamp H Tel: 011 206 1124 / 1185 / 1126 Email:steenkamp.h@dhet.gov.za</p>
-
-        <br>
         <section>
+            <h1>confirmation of trade test date</h1>
             <br>
 
-            <br>
-
-            <p><b>The Quality Assurance Manager: Quality Council for Trades and Occupations</b></p>
 
             <br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Serial No</td>
+                        <td>{{serial_no}}</td>
+                    </tr>
+                    <tr>
+                        <td>Candidate Name as per ID document</td>
+                        <td>{{candidate_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Id Number</td>
+                        <td>{{id_num}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of First Trade Test Attempt</td>
+                        <td>{{date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Trade test Attempt No</td>
+                        <td>{{trade_test_attempt_no}}</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <br>
 
-            <p><b>Re: Accreditation of Trade Test Centre</b></p>
+
+            <br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Trade Test Centre</td>
+                        <td>{{trade_test_centre}}</td>
+                    </tr>
+                    <tr>
+                        <td>Physical Address</td>
+                        <td>{{physical_address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td>{{contact_num}}</td>
+                    </tr>
+                    <tr>
+                        <td>Trade</td>
+                        <td>{{trade}}</td>
+                    </tr>
+                    <tr>
+                        <td>Specialisation</td>
+                        <td>{{specialisattion}}</td>
+                    </tr>
+                    <tr>
+                        <td>OFOCode</td>
+                        <td>{{OfoCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Trade Test Date</td>
+                        <td>{{trade_test_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>{{time}}</td>
+                    </tr>
+                <tbody>
+            </table>
+            <br>
+
 
             <br>
 
-            <br>
+            <div class="parent">
+                <p><b>Notes:</b></p>
+                <ol>
+                    <div class="child">
+                        <li>Please quote your serial number in all communication between yourself and the trade test
+                            centre
+                        </li>
+                    </div>
+                    <div class="child">
+                        <li>Please bring this letter with you on the day of the trade test to the relevant Workshop
+                        </li>
+                    </div>
+                    <div class="child">
+                        <li>
+                            Tools:
+                        </li>
+                        <ul class="tools">
+                            <li>Trade Test Candidate may bring along tools on the day of the trade test.</li>
+                            <li>The tools must be declared to the assessor and approved by the assessor for use during
+                                the
+                                trade
+                                test.
+                            </li>
+                            <li>Candidates in the metal machining related trades may bring along the relevant cutting
+                                tools.
+                            </li>
+                        </ul>
+                    </div>
 
-            <p>Subsequent to an accreditation audit conducted by NAMB,
-                it is hereby recommended that the QCTO awards accreditation to the Trade Test Centre indicated below for
-                trades listed in terms of
-                Section 26 B of the SDA in the schedule attached.</p>
+                    <div class="child">
+                        <li>Candidates must wear the relevant Personal Productive Clothing(PPC)as required for each
+                            trade.
+                        </li>
+                    </div>
+                    <div class="child">
+                        <li><b>Candidate will be disqualified from the trade test if they arrive ONE hour
+                                late after
+                                commencement of
+                                the trade test.
+                            </b></li>
+                    </div>
 
-            <br>
-
-            <br>
-
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Centre Name</td>
-                            <td>{{trade_test_centre_name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Physical Address</td>
-                            <td>{{physical_address}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact Person</td>
-                            <td>{{contact_person}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Contact Details</td>
-                            <td>{{contact_details}}</td>
-                        </tr>
-                        <tr>
-                            <td>Email Address</td>
-                            <td>{{email}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                </ol>
             </div>
-
-            <br>
-
-            <p>Your support in this regard will be appreciated</p>
 
         </section>
-
-        <footer>
-            <div class="SIG">
-                <div class="sign-field">
-                        <p> 
-                            Mr DK Mabusela
-                            <hr class="break">
-                            Chief Director: National Artisan Development
-                        </p>
-                        <!-- <p id="sign"> 
-                            <hr class="break">
-                            date
-                        </p> -->
-                </div>
-        
-                <div class="sign-field" id="date">
-                    <p> 
-                     
-                        <hr class="break">
-                       
-                    </p>
-                    <!-- <p class="para2"> 
-                        23 March 2021  
-                        <hr class="break">
-                        DATE
-                    </p> -->
-                </div>
-            </div>
-            </div>
-        </footer>
-
     </div>
-
 </body>
 
 </html>
