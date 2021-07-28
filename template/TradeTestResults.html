@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment letter for SME</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .wrapper {
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        .logo {
+            font-family: "Sunflower", sans-serif;
+            height: 3.02cm;
+            line-height: 17px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h4 {
+            line-height: 23px;
+            margin-bottom: 0.4rem;
+            position: relative;
+            font-weight: 400;
+            font-size: x-large;
+        }
+
+        .logo h4::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: black;
+            left: 0;
+            bottom: -0.21rem;
+        }
+
+        .logo p {
+            font-weight: 300;
+            font-size: 0.9em;
+        }
+
+        .logo img {
+            height: calc(100% - 15px);
+        }
+
+        section {
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+        }
+
+        section .dates {
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            justify-items: flex-start;
+        }
+
+        section .dates>div {
+            grid-column: 2;
+            display: grid;
+            width: 100%;
+            grid-template-columns: 35% 50%;
+        }
+
+        section .dates>div span {
+            color: #2f2f2f;
+            border-bottom: 1px solid black;
+        }
+
+        section .candidate {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+
+        section .candidate>div {
+            display: grid;
+            grid-template-columns: minmax(12ch, 18ch) 1fr;
+            margin-bottom: 0.2rem;
+        }
+
+        section .candidate>div span {
+            text-decoration: underline;
+            text-underline-offset: 2.4px;
+            color: #2f2f2f;
+        }
+
+        section .candidate>div.address span {
+            line-height: 15.2px;
+        }
+
+        section h4 {
+            text-decoration: underline;
+            margin-bottom: 0.5rem;
+        }
+
+        section p.sect {
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
+        }
+
+        section .appInfo {
+            width: 70%;
+            display: grid;
+            flex-direction: column;
+            grid-template-columns: 18ch 1fr;
+            row-gap: 0.3rem;
+        }
+
+        section .appInfo span {
+            border-bottom: 1px solid black;
+            color: #2f2f2f;
+            font-size: 0.6rem;
+        }
+
+        section .notes {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        section .notes ul {
+            margin-left: 0.6rem;
+        }
+
+        table {
+            width: 50%;
+            table-layout: fixed;
+        }
+
+        table,
+        thead,
+        th,
+        td {
+            border: solid 1px #000;
+            padding: 15px;
+            text-align: left;
+
+        }
+
+        table {
+
+            border-collapse: collapse;
+            caption-side: bottom;
+        }
+
+        .dates>div {
+            grid-column: 2;
+            display: grid;
+            width: 100%;
+            grid-template-columns: 35% 50%;
+        }
+
+        .dates>div span {
+            color: #2f2f2f;
+            border-bottom: 1px solid black;
+        }
+
+
+        .dec {
+
+            margin: 1.5em 0px 0px 15%;
+        }
+
+        footer {
+            margin-top: 2rem;
+        }
+
+        footer span {
+            display: block;
+            width: 10%;
+            border-bottom: 1px solid;
+        }
+
+        footer b {
+            font-size: 0.6rem;
+        }
+
+        .SIG {
+            width: 100%;
+            margin: 0px 30px 0px 30px;
+        }
+
+        .break {
+            width: 10em;
+            border: 1px solid black;
+            margin-left: 0;
+        }
+
+        .sign-field {
+            float: left;
+            width: 50%;
+            text-align: left;
+        }
+
+        .para2 {
+            margin-top: 2em;
+        }
+
+        #sign {
+            margin-top: 3.5em;
+        }
+
+        #d {
+            height: auto;
+            width: 50%;
+        }
+
+
+        .address {
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            {{{logo}}}
+            <div class="dept">
+                <h4>higher education <br>& training</h4>
+                <p>Department:</p>
+                <p>Higher Education and Training</p>
+                <b>REPUBLIC OF SOUTH AFRICA</b>
+            </div>
+        </div>
+        <section>
+            <br>
+
+            <br>
+            <p class="dec">
+                <b>TRADE TEST FEEDBACK REPORT</b>
+            </p>
+            <br>
+
+            <br>
+
+            <p><b>(To be issued by Trade test centres to candidates at completion
+                    of the Trade Test in trades where in it is possible to do so.)</b></p>
+
+            <br>
+
+
+            <br>
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><b>Candidate Name</b></td>
+                            <td>{{candidate_name}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Trade Name</b></td>
+                            <td>{{trade_name}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Specialisattion</b></td>
+                            <td>{{specialisattion}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>OfoCode</b></td>
+                            <td>{{OfOCode}}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>SAQA Qal ID</b></td>
+                            <td>{{saqa_id}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Identity Number</b></td>
+                            <td>{{id_num}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Contact Number</b></td>
+                            <td>{{contact_num}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Trade Test Centre</b></td>
+                            <td>{{trade_test_centre}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Trade Test Serial Number</b></td>
+                            <td>{{trade_test_serial_number}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Test Date</b></td>
+                            <td>{{test_date}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Attempt Number</b></td>
+                            <td>{{attempt_no}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+
+                <br>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th><b>No</b></th>
+                            <th><b>Task</b></th>
+                            <th><b>Date Achieved</b></th>
+                            <th><b>Outcome</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Provisional results subject to moderation</td>
+                            <td><b>Absent</b></td>
+                            <td>{{results}}</td>
+                            <td><b>Not yet competent</b></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><b>Withdrew</b></td>
+                            <td>{{results}}</td>
+                            <td><b>Competent</b></td>
+                        
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+
+                <br>
+
+                <table>
+                    <tr>
+                        <td><b>Assessor Name</b></td>
+                        <td>{{assessor_name}}</td>
+                        <td><b>Moderator Name</b></td>
+                        <td>{{moderator_name}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Reg No</b></td>
+                        <td>{{reg_no}}</td>
+                        <td><b>ID No</b></td>
+                        <td>{{id_num}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Signature</b></td>
+                        <td>{{signature}}</td>
+                        <td><b>Signature</b></td>
+                        <td>{{signature}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Date</b></td>
+                        <td>{{date}}</td>
+                        <td><b>Date</b></td>
+                        <td>{{date}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Centre Manager</b></td>
+                        <td>{{centre_manager}}</td>
+                        <td><b>Namb Verifier</b></td>
+                        <td>{{namb_verifier}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Signature</b></td>
+                        <td>{{signature}}</td>
+                        <td><b>Signature</b></td>
+                        <td>{{signature}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Date</b></td>
+                        <td>{{date}}</td>
+                        <td><b>Date</b></td>
+                        <td>{{date}}</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
