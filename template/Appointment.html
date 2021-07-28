@@ -89,6 +89,8 @@
             border-bottom: 1px solid black;
         }
 
+
+
         section .candidate {
             display: flex;
             flex-direction: column;
@@ -145,25 +147,41 @@
         }
 
         table {
-            width: 50%;
-            table-layout: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px black;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+        th {
+            text-align: center;
+        }
+        .th2 {
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid black;
         }
 
-        table,
-        thead,
-        th,
+        tr {
+            width: 70%;
+            border: 1px solid black;
+        }
+
         td {
-            border: solid 1px #000;
-            padding: 15px;
+            height: 20px;
+            border-collapse: collapse;
+            border: 1px solid black;
+            /* padding: 15px; */
+            width: 30%;
             text-align: left;
 
         }
 
-        table {
-
-            border-collapse: collapse;
-            caption-side: bottom;
+        .address {
+            text-align: center;
         }
+
 
         .dates>div {
             grid-column: 2;
@@ -198,7 +216,7 @@
 
         .break {
             width: 10em;
-            border: 1px solid black;
+            border: 2px solid black;
             margin-left: 0;
         }
 
@@ -221,7 +239,6 @@
             width: 50%;
         }
 
-
         .address {
             font-size: 0.7rem;
         }
@@ -239,27 +256,41 @@
                 <b>REPUBLIC OF SOUTH AFRICA</b>
             </div>
         </div>
-        <p class="address">Old Pretoria/Kempton Park Road, Private Bag X5, Olifantsfontein, 1665 Tel (011)206 1000 Fax
-            (011)316 4763</p>
-        <p class="address">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956
-            Website: www.dhet.gov.za
-        </p>
-        <p class="address">Website: www.dhet.gov.za </p>
+        <br>
+
+        <p class="address">Private Bag X893, Pretoria, 0001, Tel (012) 312 5555, Fax (012) 323 5618</p>
+        <p class="address">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956</p>
+        <p class="address">Website: www.dhet.gov.za</p>
+        <br>
+
+
         <section>
             <div class="dates">
                 <div class="enquires">
                     <p>Enquires: </p><span>Ms. Heilene Steenkamp</span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>011 206 1126</span>
+                    <p>Tel No: </p><span>011 206 1124/6</span>
                 </div>
                 <div class="email">
                     <p>Email: </p><span>Steenkamp.h@dhet.gov.za</span>
                 </div>
             </div>
-            <p>Dear Mr/Ms</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <p>Dear</p>
+
+            <br>
             <br>
             <h4>Re: Appointment in terms of the NAMB Service Level Agreement with accredited Trade Test Centre.</h4>
+            <br>
+            <br>
             <br>
             <p class="sect">You are hereby appointed by the National Artisan Moderation Body in line with sections 8.1.2
                 to 8.1.5 of the
@@ -267,16 +298,16 @@
                 practitioner in the capacity indicated below:</p>
 
             <br>
-
-
+            <br>
             <br>
 
             <div>
                 <table>
                     <thead>
                         <tr>
-                            <th rowspan="1" colspan="2">Capacity X</th>
-                            <th rowspan="1" colspan="1">Trade</th>
+                            <th>Capacity</th>
+                            <th>X</th>
+                            <th class="th2">Trade</th>
 
                         </tr>
                     </thead>
@@ -285,8 +316,6 @@
                             <td>Accreditation Auditor</td>
                             <td></td>
                             <td></td>
-
-
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitor</td>
@@ -295,8 +324,8 @@
                         </tr>
                         <tr>
                             <td>Investigator</td>
-                            <td>{{investigator}}</td>
-                            <td>{{trade}}</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>External Moderator</td>
@@ -310,20 +339,25 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <br>
+                <br>
                 <br>
                 <p class="sect">
                     In your capacity as indicated above you will be expected to perform the function
                     indicated below in line with the Criteria and Guidelines provided to you by NAMB in relation to the
                     specific function:</p>
-                <br>
-
 
                 <br>
+                <br>
+                <br>
+
                 <table>
                     <thead>
                         <tr>
-                            <th rowspan="1" colspan="2">Function X</th>
-                            <th rowspan="1" colspan="1">Date</th>
+                            <th>Function</th>
+                            <th>X</th>
+                            <th class="th2">Date</th>
 
                         </tr>
                     </thead>
@@ -333,7 +367,6 @@
                             <td></td>
                             <td></td>
 
-
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitoring visit</td>
@@ -342,8 +375,8 @@
                         </tr>
                         <tr>
                             <td>Appeal Investigation</td>
-                            <td>{{ppeal_investigator}}</td>
-                            <td>{{date}}</td>
+                            <td></td>
+                            <td></td>
                         </tr>
 
                         <tr>
@@ -369,132 +402,123 @@
                         </tr>
                     </tbody>
                 </table>
-                <br>
 
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
                 <p class="sect">This function will be conducted at the accredited trade test centre indicated below.</p>
 
                 <br>
-
+                <br>
                 <br>
 
                 <table>
                     <tbody>
                         <tr>
                             <td>Trade Test Centre Name</td>
-                            <td>{{trade_test_centre_name}}</td>
+                            <td>{{tcc_name}}</td>
                         </tr>
                         <tr>
-                            <td>Physical address</td>
-                            <td>{{physical address}}</td>
+                            <tr>
+                                <td rowspan="5" colspan="1">physical Address</td>
+                                <td>{{address0}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{address1}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{address2}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{address3}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{address4}}</td>
+                            </tr>
+                            
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
-                            <td>{{contact_person}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td>{{contact_no}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td>{{email}}</td>
+                            <td></td>
                         </tr>
 
                     </tbody>
                 </table>
 
                 <br>
-
                 <br>
-                <p>Your report/ findings in-line with Criteria and Guidelines must be submitted to:</p>
+                <br>
 
+                <p>Your report/ findings in-line with Criteria and Guidelines must be submitted to:</p>
+                <br>
                 <br>
 
                 <p>NAMB identified persons contact detail</p>
+
+                <br>
                 <br>
 
-                <div class="contact">
-                    <div class="enquires">
-                        <p>Ms. Kelebogile Mafikeng</p>
-                    </div>
-                    <div class="tel">
-                        <p>011 206 1182</p>
-                    </div>
-                    <div class="email">
-                        <p>Mafikeng.k@dhet.gov.za</p>
-                    </div>
-                </div>
+                <p><b>Mr Muzi Zulu</b></p>
+                <p>011 206 1186</p>
+
                 <br>
+                <br>
+
                 <p>Your support and commitment in this regard is appreciated.</p>
             </div>
         </section>
+
 
         <footer>
             <div class="SIG">
                 <div class="sign-field">
                     <p>
-                        Mr Jowie Bopape
                         <hr class="break">
-                        Director
-                        NAMB
-
+                    <p><b>Ms Heilene Steenkamp</b></p>
+                    <p><b>Deputy Director: NAMB</b></p>
                     </p>
-                    <!-- <p id="sign"> 
-                            <hr class="break">
-                            date
-                        </p> -->
+                    <p id="sign">
+                        <hr class="break">
+                    <p><b>T Steyl</b></p>
+                    <p><b>SME:Auto Body Repairer</b></p>
+                    </p>
                 </div>
+
+                <br>
+
+                <br>
 
                 <div class="sign-field" id="date">
                     <p>
-
                         <hr class="break">
-
+                    <p><b>Date</b></p>
+                    <p><b></b></p>
                     </p>
-                    <!-- <p class="para2"> 
-                        23 March 2021  
+                    <p class="para2">
+
                         <hr class="break">
-                        DATE
-                    </p> -->
+                    <p><b>Date</b></p>
+                    <p><b></b></p>
+                    </p>
                 </div>
             </div>
 
-            <br>
-
-            <div id="d">I hereby accept the appointment and function as indicated above.</div>
-
-            <br>
-
-            <br>
-
-            <div class="SIG">
-                <div class="sign-field">
-                    <p>
-
-                        <hr class="break">
-                        Mr/Ms
-
-                    </p>
-                    <!-- <p id="sign"> 
-                            <hr class="break">
-                            date
-                        </p> -->
-                </div>
-
-                <div class="sign-field" id="date">
-                    <p>
-
-                        <hr class="break">
-
-                    </p>
-                    <!-- <p class="para2"> 
-                        23 March 2021  
-                        <hr class="break">
-                        DATE
-                    </p> -->
-                </div>
-            </div>
         </footer>
     </div>
 
