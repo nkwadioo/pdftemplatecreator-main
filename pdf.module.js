@@ -178,5 +178,13 @@ router.post('/TradeTestdate', function (req, res) {
 	createPDF(req, res, 'TradeTestdate.html');
 })
 
+router.post('/TradeTestFeedbackReport', function (req, res) {
+	createPDF(req, res, 'TradeTestFeedbackReport.html');
+})
+router.post('/TradeTestResults', function (req, res) {
+	createPDF(req, res, 'TradeTestResults.html');
+})
+
+
 
 module.exports = router;
