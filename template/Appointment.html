@@ -114,8 +114,8 @@
         }
 
         section h4 {
-            text-decoration: underline;
-            margin-bottom: 0.5rem;
+            border-bottom: 1px solid black;
+            /* margin-bottom: 0.5rem; */
         }
 
         section p.sect {
@@ -147,25 +147,43 @@
         }
 
         table {
-            width: 50%;
-            table-layout: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+
         }
 
-        table,
-        thead,
-        th,
+        th {
+            text-align: center;
+        }
+
+        .th2 {
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        /* tr {
+            width: 70%;
+            border: 1px solid black;
+        } */
+
         td {
-            border: solid 1px #000;
-            padding: 15px;
+            height: 20px;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            /* padding: 15px; */
+            width: 30%;
             text-align: left;
 
         }
 
-        table {
-
-            border-collapse: collapse;
-            caption-side: bottom;
+        .address {
+            text-align: center;
         }
+
 
         .dates>div {
             grid-column: 2;
@@ -200,7 +218,7 @@
 
         .break {
             width: 10em;
-            border: 2px solid black;
+            border: 1px solid black;
             margin-left: 0;
         }
 
@@ -209,9 +227,16 @@
             width: 50%;
             text-align: left;
         }
-
+        .sign-field1 {
+            float: right;
+            width: 50%;
+            text-align: left;
+        }
+        .para1 {
+            margin-top: 4em;
+        }
         .para2 {
-            margin-top: 2em;
+            margin-top: 3em;
         }
 
         #sign {
@@ -240,31 +265,41 @@
                 <b>REPUBLIC OF SOUTH AFRICA</b>
             </div>
         </div>
-        <p class="address">Old Pretoria/Kempton Park Road, Private Bag X5, Olifantsfontein, 1665 Tel (011)206 1000 Fax
-            (011)316 4763</p>
+        <br>
+
+        <p class="address">Private Bag X893, Pretoria, 0001, Tel (012) 312 5555, Fax (012) 323 5618</p>
+        <p class="address">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956</p>
+        <p class="address">Website: www.dhet.gov.za</p>
+        <br>
+
+
         <section>
             <div class="dates">
                 <div class="enquires">
-                    <p>Enquires: </p><span>Ms. Heilene Steenkamp</span>
+                    <p>Enquires : </p><span>{{Enquires_name}}</span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>011 206 1124/6</span>
+                    <p>Tel No : </p><span>{{Enquires_tell}}</span>
                 </div>
                 <div class="email">
-                    <p>Email: </p><span>Steenkamp.h@dhet.gov.za</span>
+                    <p>Email : </p><span>{{Enquires_email}}</span>
                 </div>
             </div>
             <br>
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
 
-            <p>Dear T Steyl</p>
+            <p>Dear {{Dear_details}}</p>
 
             <br>
-
-
             <br>
             <h4>Re: Appointment in terms of the NAMB Service Level Agreement with accredited Trade Test Centre.</h4>
+            <br>
+            <br>
             <br>
             <p class="sect">You are hereby appointed by the National Artisan Moderation Body in line with sections 8.1.2
                 to 8.1.5 of the
@@ -272,191 +307,223 @@
                 practitioner in the capacity indicated below:</p>
 
             <br>
-
-
+            <br>
             <br>
 
             <div>
                 <table>
                     <thead>
                         <tr>
-                            <th rowspan="1" colspan="2">Capacity X</th>
-                            <th rowspan="1" colspan="1">Trade</th>
+                            <th>Capacity</th>
+                            <th>X</th>
+                            <th class="th2">Trade</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Accreditation Auditor</td>
-                            <td>{{accreditation_audit}}</td>
-                            <td></td>
+                            <td>{{Accreditation_Auditor_x}}</td>
+                            <td>{{Accreditation_Auditor_date}}</td>
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitor</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{TradeTestCentre_Monitor_x}}</td>
+                            <td>{{TradeTestCentre_Monitor_date}}</td>
                         </tr>
                         <tr>
                             <td>Investigator</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Investigator_x}}</td>
+                            <td>{{Investigator_date}}</td>
                         </tr>
                         <tr>
                             <td>External Moderator</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{External_Moderator_x}}</td>
+                            <td>{{External_Moderator_date}}</td>
                         </tr>
                         <tr>
                             <td>Administrative Auditor</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Administrative_Auditor_x}}</td>
+                            <td>{{Administrative_Auditor_date}}</td>
                         </tr>
                     </tbody>
                 </table>
+
+                <br>
+                <br>
                 <br>
                 <p class="sect">
                     In your capacity as indicated above you will be expected to perform the function
                     indicated below in line with the Criteria and Guidelines provided to you by NAMB in relation to the
                     specific function:</p>
-                <br>
-
 
                 <br>
+                <br>
+                <br>
+
                 <table>
                     <thead>
                         <tr>
-                            <th rowspan="1" colspan="2">Function X</th>
-                            <th rowspan="1" colspan="1">Date</th>
+                            <th>Function</th>
+                            <th>X</th>
+                            <th class="th2">Date</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Accreditation Audit</td>
-                            <td>{{accreditation_audit}}</td>
-                            <td>{{trade}}</td>
-
-
+                            <td>{{Accreditation_Audit_x}}</td>
+                            <td>{{Accreditation_Audit_date}}</td>
 
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitoring visit</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Monitoring_visit_x}}</td>
+                            <td>{{Monitoring_visit_date}}</td>
                         </tr>
                         <tr>
                             <td>Appeal Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Investigation_x}}</td>
+                            <td>{{Investigation_date}}</td>
                         </tr>
 
                         <tr>
                             <td>Complaint Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Complaint_Investigation_x}}</td>
+                            <td>{{Complaint_Investigation_date}}</td>
                         </tr>
 
                         <tr>
                             <td>Irregularity Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Irregularity_Investigation_x}}</td>
+                            <td>{{Irregularity_Investigation_date}}</td>
                         </tr>
                         <tr>
                             <td>External Moderation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{External_Moderation_x}}</td>
+                            <td>{{External_Moderation_date}}</td>
                         </tr>
                         <tr>
                             <td>Administrative Audit</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Administrative_Audit_x}}</td>
+                            <td>{{Administrative_Audit_date}}</td>
                         </tr>
                     </tbody>
                 </table>
-                <br>
 
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
                 <p class="sect">This function will be conducted at the accredited trade test centre indicated below.</p>
 
                 <br>
-
+                <br>
                 <br>
 
                 <table>
                     <tbody>
                         <tr>
                             <td>Trade Test Centre Name</td>
-                            <td>{{belcomec_training_pty_ltd </td>
+                            <td>{{tcc_name}}</td>
                         </tr>
                         <tr>
-                            <td>Physical address</td>
-                            <td>{{7_fabriek_street_industria_george_western_cape</td>
+                        <tr>
+                            <td rowspan="5" colspan="1">physical Address</td>
+                            <td>{{address0}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address1}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address2}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address3}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address4}}</td>
+                        </tr>
+
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
-                            <td></td>
+                            <td>{{contact_person}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td>{{0825707892}}</td>
+                            <td>{{contact_tell}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td>{{ronel@belcomectraining.co.za}}</td>
+                            <td>{{contact_email}}</td>
                         </tr>
 
                     </tbody>
                 </table>
 
                 <br>
-
                 <br>
-                <p>Your report/ findings in-line with Criteria and Guidelines must be submitted to:</p>
+                <br>
 
+                <p>Your report/ findings in-line with Criteria and Guidelines must be submitted to:</p>
+                <br>
                 <br>
 
                 <p>NAMB identified persons contact detail</p>
-                <br>
-
-                <p><b>Mr Muzi Zulu</b></p>
-                <p>011 206 1186</p>
-
-
 
                 <br>
+                <br>
+
+                <p><b>{{person_names}}</b></p>
+                <p>{{person_contact}}</p>
+                <p>{{person_email}}</p>
+
+                <br>
+                <br>
+
                 <p>Your support and commitment in this regard is appreciated.</p>
             </div>
         </section>
 
+<br>
+<br>
+<br>
         <footer>
             <div class="SIG">
                 <div class="sign-field">
                     <p>
+        
                         <hr class="break">
                     <p><b>Ms Heilene Steenkamp</b></p>
                     <p><b>Deputy Director: NAMB</b></p>
                     </p>
-                    <p id="sign">
+                    <p class="para1">
                         <hr class="break">
-                        <p><b>T Steyl</b></p>
-                        <p><b>SME:Auto Body Repairer</b></p>
+                    <p><b>T Steyl</b></p>
+                    <p><b>SME:Auto Body Repairer</b></p>
                     </p>
                 </div>
-
-                <br>
-
-                <br>
-                
-                <div class="sign-field" id="date">
-                    <p>
+                <div class="sign-field1">
+                    <p>{{today_date}}
                         <hr class="break">
                     <p><b>Date</b></p>
+                    <p><b></b></p>
+                    
                     </p>
                     <p class="para2">
-
+                        {{today_date}}
                         <hr class="break">
-                        <p><b>Date</b></p>
-
+                    <p><b>Date</b></p>
+                    <p><b></b></p>
                     </p>
                 </div>
             </div>

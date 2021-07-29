@@ -134,20 +134,22 @@ async function createPDF(req, res, teplate_name) {
 
 }
 
+router.post('/Registration', function (req, res) {
+	createPDF(req, res, 'Registration.html');
+})
+
 router.post('/notification', function (req, res) {
 	createPDF(req, res, 'notificationOfTradeTestDate.html');
 })
-router.post('/appointSME', function (req, res) {
-	createPDF(req, res, 'appointSME.html');
-})
+
 router.post('/feedback', function (req, res) {
 	createPDF(req, res, 'feedback.html');
 })
 router.post('/QTCO', function (req, res) {
 	createPDF(req, res, 'QTCO.html');
 })
-router.post('/Tsteyl', function (req, res) {
-	createPDF(req, res, 'Tsteyl.html');
+router.post('/Appointment', function (req, res) {
+	createPDF(req, res, 'Appointment.html');
 })
 
 router.get('/1', function (req, res) {
@@ -157,26 +159,31 @@ router.get('/1', function (req, res) {
 router.post('/generatepdfNotification', function (req, res) {
 	createPDF(req, res, 'notificationOfTradeTestDate.html');
 })
-router.post('/AppointSME', function (req, res) {
-	createPDF(req, res, 'appointSME.html');
-})
+
 router.post('/AppealReport', function (req, res) {
 	createPDF(req, res, 'feedback.html');
 })
 router.post('/Approval', function (req, res) {
 	createPDF(req, res, 'QTCO.html');
 })
-router.post('/Auditing', function (req, res) {
-	createPDF(req, res, 'Tsteyl.html');
-})
-router.post('/Registration', function (req, res) {
-	createPDF(req, res, 'AsswesorV2Letter.html');
-})
+
 router.post('/7', function (req, res) {
 	createPDF(req, res, 'legacyTrade.html');
 })
 router.post('/Accreditation', function (req, res) {
 	createPDF(req, res, 'TechnicalAA.html');
 })
+router.post('/TradeTestdate', function (req, res) {
+	createPDF(req, res, 'TradeTestdate.html');
+})
+
+router.post('/TradeTestFeedbackReport', function (req, res) {
+	createPDF(req, res, 'TradeTestFeedbackReport.html');
+})
+router.post('/TradeTestResults', function (req, res) {
+	createPDF(req, res, 'TradeTestResults.html');
+})
+
+
 
 module.exports = router;

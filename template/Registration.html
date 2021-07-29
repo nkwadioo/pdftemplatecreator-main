@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment letter for SME</title>
+    <title>Registration V2 Letter</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
@@ -147,24 +147,23 @@
         }
 
         table {
-            width: 50%;
-            table-layout: fixed;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        table,
-        thead,
+
+
+        th {
+            background: #eee;
+        }
+
+
+
         th,
         td {
-            border: solid 1px #000;
-            padding: 15px;
-            text-align: left;
-
-        }
-
-        table {
-
-            border-collapse: collapse;
-            caption-side: bottom;
+            border: 1px solid #999;
+            padding: 10px;
         }
 
         .dates>div {
@@ -193,23 +192,29 @@
             font-size: 0.6rem;
         }
 
-        .SIG{
-            width: 100%; margin: 0px 30px 0px 30px;
+        .SIG {
+            width: 100%;
+            margin: 0px 30px 0px 30px;
         }
 
         .break {
             width: 10em;
-            border: 1px  solid black;
+            border: 1px solid black;
             margin-left: 0;
         }
 
         .sign-field {
-            float: left; width: 50%;
+            float: left;
+            width: 50%;
             text-align: left;
         }
 
-        .para2{
+        .para2 {
             margin-top: 2em;
+        }
+
+        .address {
+            text-align: center;
         }
 
         #sign {
@@ -226,7 +231,7 @@
     <div class="wrapper">
         <div class="logo">
             {{{logo}}}
-           
+
             <div class="dept">
                 <h4>higher education <br>& training</h4>
                 <p>Department:</p>
@@ -234,46 +239,41 @@
                 <b>REPUBLIC OF SOUTH AFRICA</b>
             </div>
         </div>
-        <p class="address">Private Bag X393, Pretoria, 0001, Tel (012) 312 5555, Fax (012) 323 5618</p>
-
         <br>
 
+        <p class="address">Private Bag X893, Pretoria, 0001, Tel (012) 312 5555, Fax (012) 323 5618</p>
         <p class="address">Private Bag X9192, Cape Town, 8000, Tel (021) 465 5513, Fax: (021) 465 7956</p>
-
-        <br>
-
         <p class="address">Website: www.dhet.gov.za</p>
-
-
         <br>
-
 
         <br>
         <section>
             <div class="dates">
                 <div class="enquires">
-                    <p>Enquires: </p><span>Ms. Heilene Steenkamp</span>
+                    <p>Enquires : </p><span>{{enquiries_name}}</span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>011 206 1124/6</span>
+                    <p>Tel No : </p><span>{{enquiries_tel}}</span>
                 </div>
                 <div class="email">
-                    <p>Email: </p><span>Steenkamp.h@dhet.gov.za</span>
+                    <p>Email  : </p><span>{{enquiries_email}}</span>
                 </div>
             </div>
 
             <br>
-
-
-
+            <br>
+            <br>
+            <br>
             <br>
 
-            <p><b>ID:</b></p>
+            <p><b>ID :{{assessor_ID}}</b></p>
 
+            <br>
             <br>
 
             <p><b>Re: Registration as a Trade Assessment Practitioner.</b></p>
 
+            <br>
             <br>
 
             <p>This serves to inform you that your application for registration as a Trade Assessment Practitioner was
@@ -281,59 +281,58 @@
                 NAMB and herewith the following feedback is provided.</p>
 
             <br>
-
-
             <br>
 
             <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Registration approved</th>
-                            <th>Yes X</th>
-                            <th>No</th>
-                            <th>Registration Type</th>
-                            <th>Assessor X</th>
-                            <th>Moderator X</th>
 
-                        </tr>
-                    </thead>
+                <table>
                     <tbody>
                         <tr>
-                            <td rowspan="1" colspan="4">Registration Number</td>
-                            <td></td>
-                            <td></td>
+                            <td>Registration Approved</td>
+                            <td>Yes {{assessor_yes}}</td>
+                            <td>No {{assessor_no}}</td>
+                            <td>Registation Type</td>
+                            <td colspan="2">Assessor {{assessor_tick}}</td>
+                            <td colspan="2">Moderator {{moderator_tick}}</td>
                         </tr>
 
                         <tr>
-                            <td rowspan="1" colspan="2">Registration Date</td>
-                            <td>{{reg_dateF}}</td>
-                            <td>{{reg_dateT}}</td>
-                            <td>{{reg_dateA}}</td>
-                            <td>{{reg_dateM}}</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="1" colspan="1">Centre Name</td>
-                            <td colspan="5"></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="1" colspan="1">OFOCode</td>
-                            <td colspan="2">{{trade_title}}</td>
-                            <td colspan="3">{{specialisation}}</td>
-
+                            <td colspan="4">Registration Number</td>
+                            <td colspan="2">{{assessor_regNum}}</td>
+                            <td colspan="2">{{moderator_regNum}}</td>
                         </tr>
 
                         <tr>
-                            <td rowspan="1" colspan="1">Accreditation Auditor</td>
-                            <td colspan="2"></td>
-                            <td colspan="3"></td>
-
+                            <td colspan="4">Registration Date</td>
+                            <td>From {{assessor_date_from}}</td>
+                            <td>To {{assessor_date_to}}</td>
+                            <td>From {{moderator_date_from}}</td>
+                            <td>To {{moderator_date_to}}</td>
                         </tr>
+
+                        <tr>
+                            <td colspan="1">Center Name</td>
+                            <td colspan="7"> {{ttc_name}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1">OFO Code</td>
+                            <td colspan="3">Trade Title</td>
+                            <td colspan="4">Specialisation/Alternative</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1">{{ofo_code}}</td>
+                            <td colspan="3">{{trade_title}}</td>
+                        <td colspan="4">{{specialisation_alternative}}</td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
         </section>
 
+        <br>
         <footer>
 
             <div class="signature">
@@ -342,19 +341,8 @@
                 <p><b>Chief Director: National Artisan Development</b></p>
             </div>
 
-            <!-- <div class="sign-field" id="date">
-                <p> 
-                 
-                    <hr class="break">
-                    date
-                </p>
-                 <p class="para2"> 
-                    23 March 2021  
-                    <hr class="break">
-                    DATE
-                </p> -->
-            </div> 
-        </footer>
+    </div>
+    </footer>
     </div>
 </body>
 
