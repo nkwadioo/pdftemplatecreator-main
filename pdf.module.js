@@ -107,7 +107,6 @@ async function createPDF(req, res, teplate_name) {
 			`${html}`
 		)
 
-
 		let pdfFile = await page.pdf(options);
 		//pdfFile = pdfFile.toString()
 		await page.close();
