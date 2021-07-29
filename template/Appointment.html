@@ -114,8 +114,8 @@
         }
 
         section h4 {
-            text-decoration: underline;
-            margin-bottom: 0.5rem;
+            border-bottom: 1px solid black;
+            /* margin-bottom: 0.5rem; */
         }
 
         section p.sect {
@@ -149,29 +149,31 @@
         table {
             margin-left: auto;
             margin-right: auto;
-            border: 1px black;
+            border: 1px solid #ddd;
             border-collapse: collapse;
             width: 100%;
 
         }
+
         th {
             text-align: center;
         }
+
         .th2 {
             text-align: center;
             border-collapse: collapse;
-            border: 1px solid black;
+            border: 1px solid #ddd;
         }
 
-        tr {
+        /* tr {
             width: 70%;
             border: 1px solid black;
-        }
+        } */
 
         td {
             height: 20px;
             border-collapse: collapse;
-            border: 1px solid black;
+            border: 1px solid #ddd;
             /* padding: 15px; */
             width: 30%;
             text-align: left;
@@ -216,7 +218,7 @@
 
         .break {
             width: 10em;
-            border: 2px solid black;
+            border: 1px solid black;
             margin-left: 0;
         }
 
@@ -225,9 +227,16 @@
             width: 50%;
             text-align: left;
         }
-
+        .sign-field1 {
+            float: right;
+            width: 50%;
+            text-align: left;
+        }
+        .para1 {
+            margin-top: 4em;
+        }
         .para2 {
-            margin-top: 2em;
+            margin-top: 3em;
         }
 
         #sign {
@@ -267,13 +276,13 @@
         <section>
             <div class="dates">
                 <div class="enquires">
-                    <p>Enquires: </p><span>Ms. Heilene Steenkamp</span>
+                    <p>Enquires : </p><span>{{Enquires_name}}</span>
                 </div>
                 <div class="tel">
-                    <p>Tel No: </p><span>011 206 1124/6</span>
+                    <p>Tel No : </p><span>{{Enquires_tell}}</span>
                 </div>
                 <div class="email">
-                    <p>Email: </p><span>Steenkamp.h@dhet.gov.za</span>
+                    <p>Email : </p><span>{{Enquires_email}}</span>
                 </div>
             </div>
             <br>
@@ -284,7 +293,7 @@
             <br>
             <br>
 
-            <p>Dear</p>
+            <p>Dear {{Dear_details}}</p>
 
             <br>
             <br>
@@ -314,28 +323,28 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Auditor</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Accreditation_Auditor_x}}</td>
+                            <td>{{Accreditation_Auditor_date}}</td>
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitor</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{TradeTestCentre_Monitor_x}}</td>
+                            <td>{{TradeTestCentre_Monitor_date}}</td>
                         </tr>
                         <tr>
                             <td>Investigator</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Investigator_x}}</td>
+                            <td>{{Investigator_date}}</td>
                         </tr>
                         <tr>
                             <td>External Moderator</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{External_Moderator_x}}</td>
+                            <td>{{External_Moderator_date}}</td>
                         </tr>
                         <tr>
                             <td>Administrative Auditor</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Administrative_Auditor_x}}</td>
+                            <td>{{Administrative_Auditor_date}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -364,41 +373,41 @@
                     <tbody>
                         <tr>
                             <td>Accreditation Audit</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Accreditation_Audit_x}}</td>
+                            <td>{{Accreditation_Audit_date}}</td>
 
                         </tr>
                         <tr>
                             <td>Trade Test Centre Monitoring visit</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Monitoring_visit_x}}</td>
+                            <td>{{Monitoring_visit_date}}</td>
                         </tr>
                         <tr>
                             <td>Appeal Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Investigation_x}}</td>
+                            <td>{{Investigation_date}}</td>
                         </tr>
 
                         <tr>
                             <td>Complaint Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Complaint_Investigation_x}}</td>
+                            <td>{{Complaint_Investigation_date}}</td>
                         </tr>
 
                         <tr>
                             <td>Irregularity Investigation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Irregularity_Investigation_x}}</td>
+                            <td>{{Irregularity_Investigation_date}}</td>
                         </tr>
                         <tr>
                             <td>External Moderation</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{External_Moderation_x}}</td>
+                            <td>{{External_Moderation_date}}</td>
                         </tr>
                         <tr>
                             <td>Administrative Audit</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{Administrative_Audit_x}}</td>
+                            <td>{{Administrative_Audit_date}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -427,35 +436,35 @@
                             <td>{{tcc_name}}</td>
                         </tr>
                         <tr>
-                            <tr>
-                                <td rowspan="5" colspan="1">physical Address</td>
-                                <td>{{address0}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{address1}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{address2}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{address3}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{address4}}</td>
-                            </tr>
-                            
+                        <tr>
+                            <td rowspan="5" colspan="1">physical Address</td>
+                            <td>{{address0}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address1}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address2}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address3}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{address4}}</td>
+                        </tr>
+
                         </tr>
                         <tr>
                             <td>Contact Person Name</td>
-                            <td></td>
+                            <td>{{contact_person}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person tel no</td>
-                            <td></td>
+                            <td>{{contact_tell}}</td>
                         </tr>
                         <tr>
                             <td>Contact Person e-mail</td>
-                            <td></td>
+                            <td>{{contact_email}}</td>
                         </tr>
 
                     </tbody>
@@ -474,8 +483,9 @@
                 <br>
                 <br>
 
-                <p><b>Mr Muzi Zulu</b></p>
-                <p>011 206 1186</p>
+                <p><b>{{person_names}}</b></p>
+                <p>{{person_contact}}</p>
+                <p>{{person_email}}</p>
 
                 <br>
                 <br>
@@ -484,34 +494,33 @@
             </div>
         </section>
 
-
+<br>
+<br>
+<br>
         <footer>
             <div class="SIG">
                 <div class="sign-field">
                     <p>
+        
                         <hr class="break">
                     <p><b>Ms Heilene Steenkamp</b></p>
                     <p><b>Deputy Director: NAMB</b></p>
                     </p>
-                    <p id="sign">
+                    <p class="para1">
                         <hr class="break">
                     <p><b>T Steyl</b></p>
                     <p><b>SME:Auto Body Repairer</b></p>
                     </p>
                 </div>
-
-                <br>
-
-                <br>
-
-                <div class="sign-field" id="date">
-                    <p>
+                <div class="sign-field1">
+                    <p>{{today_date}}
                         <hr class="break">
                     <p><b>Date</b></p>
                     <p><b></b></p>
+                    
                     </p>
                     <p class="para2">
-
+                        {{today_date}}
                         <hr class="break">
                     <p><b>Date</b></p>
                     <p><b></b></p>
